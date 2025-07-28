@@ -133,13 +133,13 @@
         }
 
         .tool-btn {
-            padding: 10px 20px;
+            padding: 8px 15px;
             border: none;
             border-radius: 8px;
             background: #667eea;
             color: white;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.3s ease;
         }
 
@@ -159,420 +159,293 @@
             transform: none;
         }
 
-        .tool-btn.exclude {
-            background: #e74c3c;
-        }
+        .tool-btn.add { background: #1abc9c; }
+        .tool-btn.add:hover { background: #16a085; }
+        .tool-btn.add.active { background: #117a65; }
 
-        .tool-btn.exclude:hover {
-            background: #c0392b;
-        }
+        .tool-btn.remove { background: #e74c3c; }
+        .tool-btn.remove:hover { background: #c0392b; }
+        .tool-btn.remove.active { background: #a93226; }
+        
+        .tool-btn.clear-auto { background: #9b59b6; }
+        .tool-btn.clear-auto:hover { background: #8e44ad; }
+        
+        .tool-btn.exclude { background: #f39c12; }
+        .tool-btn.exclude:hover { background: #e67e22; }
+        .tool-btn.exclude.active { background: #d68910; }
+        
+        .tool-btn.area { background: #3498db; }
+        .tool-btn.area:hover { background: #2980b9; }
+        .tool-btn.area.active { background: #2471a3; }
+        
+        .tool-btn.clear { background: #e67e22; }
+        .tool-btn.clear:hover { background: #d35400; }
+        
+        .tool-btn.newimage { background: #34495e; }
+        .tool-btn.newimage:hover { background: #2c3e50; }
 
-        .tool-btn.exclude.active {
-            background: #a93226;
-            box-shadow: 0 4px 12px rgba(169, 50, 38, 0.3);
-        }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #2c3e50; }
+        .input-group input, .input-group select { width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px; transition: border-color 0.3s ease; }
+        .input-group input:focus, .input-group select:focus { outline: none; border-color: #667eea; }
+        .slider-group { margin-bottom: 15px; }
+        .slider-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #2c3e50; font-size: 12px; }
+        .slider-container { display: flex; align-items: center; gap: 10px; }
+        .slider { flex: 1; height: 4px; border-radius: 2px; background: #ddd; outline: none; -webkit-appearance: none; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #667eea; cursor: pointer; }
+        .slider::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: #667eea; cursor: pointer; border: none; }
+        .slider-value { min-width: 35px; font-size: 12px; color: #666; }
+        .side-selection-hint { background: #e8f4fd; padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px solid #3498db; text-align: center; }
+        .side-selection-hint h3 { color: #2c3e50; margin-bottom: 10px; }
+        .side-selection-hint p { color: #666; font-size: 14px; }
+        .regeneration-display { background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; text-align: center; }
+        .regen-percentage { font-size: 2.5em; font-weight: bold; margin-bottom: 5px; }
+        .regen-label { font-size: 1.1em; opacity: 0.9; }
+        .regen-details { font-size: 0.9em; margin-top: 10px; opacity: 0.8; }
+        .neurite-counter { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 15px; }
+        .counter-group { padding: 8px; border: 1px solid #ddd; border-radius: 6px; background: white; display: flex; justify-content: space-between; align-items: center; }
+        .counter-label { font-size: 11px; font-weight: 600; color: #666; }
+        .counter-display { font-size: 14px; font-weight: bold; color: #2c3e50; min-width: 30px; text-align: center; }
+        .results-section { margin-top: 30px; padding: 25px; background: white; border-radius: 15px; border: 1px solid #eee; }
+        .chart-container { height: 300px; margin: 20px 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .stat-card { padding: 20px; border-radius: 10px; text-align: center; color: white; }
+        .stat-card.regenerative { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+        .stat-card.total { background: linear-gradient(135deg, #3498db, #5dade2); }
+        .stat-card.longest { background: linear-gradient(135deg, #e74c3c, #ec7063); }
+        .stat-value { font-size: 2em; font-weight: bold; margin-bottom: 5px; }
+        .stat-label { font-size: 0.9em; opacity: 0.9; }
+        .image-info { background: #e8f4fd; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+        .analyze-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; margin-bottom: 10px; }
+        .analyze-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3); }
+        .analyze-btn:disabled { background: #bdc3c7; cursor: not-allowed; transform: none; box-shadow: none; }
+        .export-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #3498db, #5dade2); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; }
+        .export-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3); }
+        .export-btn:disabled { background: #bdc3c7; cursor: not-allowed; transform: none; box-shadow: none; }
+        .processing-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); color: white; display: flex; align-items: center; justify-content: center; font-size: 18px; border-radius: 15px; }
+        .status-bar { background: #2c3e50; color: white; padding: 10px 20px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; }
+        .progress-bar { width: 100%; height: 4px; background: #ddd; border-radius: 2px; overflow: hidden; margin-top: 10px; }
+        .progress-fill { height: 100%; background: #27ae60; transition: width 0.3s ease; width: 0%; }
+        .detailed-results { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px; }
+        .result-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .result-table th, .result-table td { padding: 10px; text-align: center; border: 1px solid #ddd; }
+        .result-table th { background: #3498db; color: white; font-weight: bold; }
+        .result-table td { background: white; }
+        .exclusion-mode-selector { display: flex; gap: 10px; margin-bottom: 15px; }
+        .mode-btn { padding: 8px 16px; border: 2px solid #e74c3c; background: white; color: #e74c3c; border-radius: 6px; cursor: pointer; font-size: 12px; transition: all 0.3s ease; }
+        .mode-btn.active { background: #e74c3c; color: white; }
+        .new-image-button-container { position: relative; z-index: 10; margin-bottom: 10px; }
 
-        .tool-btn.area {
-            background: #f39c12;
-        }
-
-        .tool-btn.area:hover {
-            background: #e67e22;
-        }
-
-        .tool-btn.area.active {
-            background: #d68910;
-            box-shadow: 0 4px 12px rgba(214, 137, 16, 0.3);
-        }
-
-        .tool-btn.clear {
-            background: #e67e22;
-        }
-
-        .tool-btn.clear:hover {
-            background: #d35400;
-        }
-
-        .tool-btn.newimage {
-            background: #3498db;
-        }
-
-        .tool-btn.newimage:hover {
-            background: #2980b9;
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .input-group input, .input-group select {
+        /* TIFF Modal Styles */
+        .tiff-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border-color 0.3s ease;
-        }
-
-        .input-group input:focus, .input-group select:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .slider-group {
-            margin-bottom: 15px;
-        }
-
-        .slider-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #2c3e50;
-            font-size: 12px;
-        }
-
-        .slider-container {
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
         }
 
-        .slider {
-            flex: 1;
-            height: 4px;
-            border-radius: 2px;
-            background: #ddd;
-            outline: none;
-            -webkit-appearance: none;
-        }
-
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #667eea;
-            cursor: pointer;
-        }
-
-        .slider::-moz-range-thumb {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #667eea;
-            cursor: pointer;
-            border: none;
-        }
-
-        .slider-value {
-            min-width: 35px;
-            font-size: 12px;
-            color: #666;
-        }
-
-        .side-selection-hint {
-            background: #e8f4fd;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border: 2px solid #3498db;
-            text-align: center;
-        }
-
-        .side-selection-hint h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .side-selection-hint p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .regeneration-display {
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .regen-percentage {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .regen-label {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
-        .regen-details {
-            font-size: 0.9em;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        .neurite-counter {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .counter-group {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+        .tiff-modal-content {
             background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        .tiff-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 20px 20px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .counter-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: #666;
+        .tiff-header h2 {
+            margin: 0;
+            font-size: 1.5em;
         }
 
-        .counter-display {
-            font-size: 14px;
-            font-weight: bold;
-            color: #2c3e50;
-            min-width: 30px;
-            text-align: center;
-        }
-
-        .results-section {
-            margin-top: 30px;
-            padding: 25px;
-            background: white;
-            border-radius: 15px;
-            border: 1px solid #eee;
-        }
-
-        .chart-container {
-            height: 300px;
-            margin: 20px 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .stat-card {
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
+        .close-modal {
+            background: none;
+            border: none;
             color: white;
-        }
-
-        .stat-card.regenerative {
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
-        }
-
-        .stat-card.total {
-            background: linear-gradient(135deg, #3498db, #5dade2);
-        }
-
-        .stat-card.longest {
-            background: linear-gradient(135deg, #e74c3c, #ec7063);
-        }
-
-        .stat-value {
             font-size: 2em;
-            font-weight: bold;
-            margin-bottom: 5px;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
         }
 
-        .stat-label {
-            font-size: 0.9em;
-            opacity: 0.9;
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .image-info {
-            background: #e8f4fd;
-            padding: 15px;
-            border-radius: 10px;
+        .tiff-body {
+            padding: 30px;
+        }
+
+        .file-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 2px solid #e9ecef;
+        }
+
+        .file-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .tiff-body h3 {
+            color: #2c3e50;
             margin-bottom: 20px;
+            font-size: 1.3em;
         }
 
-        .analyze-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        .conversion-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .method-card {
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .method-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.1);
+        }
+
+        .method-card.recommended {
+            border-color: #27ae60;
+            background: linear-gradient(135deg, #d5f4e6 0%, #f0f9f5 100%);
+        }
+
+        .method-card.recommended:hover {
+            border-color: #219a52;
+        }
+
+        .method-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .method-card.recommended .method-header {
+            background: #27ae60;
             color: white;
+        }
+
+        .method-header h4 {
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        .method-content {
+            padding: 20px;
+        }
+
+        .method-content ul, .method-content ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .method-content li {
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+
+        .method-content a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .method-content a:hover {
+            text-decoration: underline;
+        }
+
+        .pro-tips {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #3498db;
+            margin-bottom: 25px;
+        }
+
+        .pro-tips h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .pro-tips ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .pro-tips li {
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+
+        .modal-actions {
+            text-align: center;
+        }
+
+        .action-btn {
+            padding: 15px 30px;
             border: none;
             border-radius: 10px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-bottom: 10px;
         }
 
-        .analyze-btn:hover {
+        .action-btn.primary {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+        }
+
+        .action-btn.primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
         }
 
-        .analyze-btn:disabled {
-            background: #bdc3c7;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .export-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #3498db, #5dade2);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        .export-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
-        }
-
-        .export-btn:disabled {
-            background: #bdc3c7;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .processing-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            border-radius: 15px;
-        }
-
-        .status-bar {
-            background: #2c3e50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: #ddd;
-            border-radius: 2px;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: #27ae60;
-            transition: width 0.3s ease;
-            width: 0%;
-        }
-
-        .detailed-results {
-            margin-top: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-
-        .result-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .result-table th,
-        .result-table td {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-
-        .result-table th {
-            background: #3498db;
-            color: white;
-            font-weight: bold;
-        }
-
-        .result-table td {
-            background: white;
-        }
-
-        .regenerative-row {
-            background: #d5f4e6 !important;
-        }
-
-        .non-regenerative-row {
-            background: #fadbd8 !important;
-        }
-
-        .exclusion-mode-selector {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .mode-btn {
-            padding: 8px 16px;
-            border: 2px solid #e74c3c;
-            background: white;
-            color: #e74c3c;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .mode-btn.active {
-            background: #e74c3c;
-            color: white;
-        }
-
-        .new-image-button-container {
-            position: relative;
-            z-index: 10;
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 1200px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-        }
+        @media (max-width: 1200px) { .main-content { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -587,19 +460,15 @@
                 <div class="upload-section" id="uploadSection">
                     <div id="uploadPrompt">
                         <h3>Upload Pyramidotomy Image</h3>
-                        <p>Drag and drop a PNG/JPG image here or click to select</p>
-                        <input type="file" id="imageInput" accept=".png,.jpg,.jpeg" style="display: none;">
-                        <button class="tool-btn" onclick="document.getElementById('imageInput').click()">
-                            Choose Image
-                        </button>
+                        <p>Drag and drop a PNG/JPG/TIFF image here or click to select</p>
+                        <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.tif,.tiff" style="display: none;">
+                        <button class="tool-btn" onclick="document.getElementById('imageInput').click()">Choose Image</button>
                     </div>
                 </div>
 
                 <div class="new-image-button-container" id="newImageButtonContainer" style="display: none;">
-                    <input type="file" id="newImageInput" accept=".png,.jpg,.jpeg" style="display: none;">
-                    <button class="tool-btn newimage" onclick="document.getElementById('newImageInput').click()" style="width: 100%;">
-                        📷 Upload New Image
-                    </button>
+                    <input type="file" id="newImageInput" accept=".png,.jpg,.jpeg,.tif,.tiff" style="display: none;">
+                    <button class="tool-btn newimage" onclick="document.getElementById('newImageInput').click()" style="width: 100%;">📷 Upload New Image</button>
                 </div>
 
                 <div class="image-container" id="imageContainer" style="display: none;">
@@ -607,26 +476,25 @@
                     <div class="processing-overlay" id="processingOverlay" style="display: none;">
                         <div>
                             <div>Processing image...</div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" id="progressFill"></div>
-                            </div>
+                            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="tools-section" id="toolsSection" style="display: none;">
-                    <div class="status-bar" id="statusBar">
-                        Click "Draw Midline" and draw a line to separate left and right sides
-                    </div>
+                    <div class="status-bar" id="statusBar">Click "Draw Midline" and draw a line to separate left and right sides</div>
 
                     <div class="tool-group">
                         <h3>Analysis Steps</h3>
                         <div class="tool-buttons">
-                            <button class="tool-btn active" id="midlineBtn" onclick="setTool('midline')">1. Draw Midline</button>
+                            <button class="tool-btn active" id="midlineBtn" onclick="setTool('midline')">1. Midline</button>
                             <button class="tool-btn" id="selectSideBtn" onclick="setTool('selectSide')" disabled>2. Select Side</button>
-                            <button class="tool-btn area" id="areaBtn" onclick="setTool('area')" disabled>3. Mark Analysis Area</button>
-                            <button class="tool-btn exclude" id="excludeBtn" onclick="setTool('exclude')" disabled>4. Exclusion Zones</button>
-                            <button class="tool-btn" id="detectBtn" onclick="detectNeurites()" disabled>5. Auto-Detect</button>
+                            <button class="tool-btn area" id="areaBtn" onclick="setTool('area')" disabled>3. Analysis Area</button>
+                            <button class="tool-btn exclude" id="excludeBtn" onclick="setTool('exclude')" disabled>4. Exclude Zones</button>
+                            <button class="tool-btn" id="detectBtn" onclick="setTool('detect')" disabled>5. Auto-Detect</button>
+                            <button class="tool-btn add" id="addBtn" onclick="setTool('add')" disabled>6. Add Neurite</button>
+                            <button class="tool-btn remove" id="removeBtn" onclick="setTool('remove')" disabled>7. Remove Neurite</button>
+                            <button class="tool-btn clear-auto" id="clearAutoBtn" onclick="clearAutoDetected()" disabled>Clear Auto</button>
                             <button class="tool-btn clear" onclick="clearCanvas()">Clear All</button>
                         </div>
                     </div>
@@ -637,9 +505,6 @@
                             <button class="mode-btn" id="rectangleMode" onclick="setExclusionMode('rectangle')">Rectangle</button>
                             <button class="mode-btn active" id="freeformMode" onclick="setExclusionMode('freeform')">Free-form</button>
                         </div>
-                        <p style="font-size: 12px; color: #666; margin-top: 5px;">
-                            Rectangle: Click and drag. Free-form: Click multiple points, double-click to finish.
-                        </p>
                     </div>
 
                     <div class="tool-group">
@@ -665,19 +530,18 @@
                         <div class="input-group">
                             <label>Scale (pixels per μm):</label>
                             <input type="number" id="scaleInput" value="0.5" step="0.1" placeholder="Enter scale factor">
-                            <small style="color: #666; font-size: 11px;">Typical: 0.5-3.0. Higher scale = shorter measured lengths</small>
                         </div>
                         <div class="input-group">
                             <label>Sensitivity:</label>
                             <select id="sensitivitySelect">
-                                <option value="low">Low (Only brightest neurites)</option>
-                                <option value="medium" selected>Medium (Recommended)</option>
-                                <option value="high">High (Include faint structures)</option>
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
                             </select>
                         </div>
                         <div class="input-group">
                             <label>Minimum Neurite Length (μm):</label>
-                            <input type="number" id="minLengthInput" value="5" min="1" max="50" step="1">
+                            <input type="number" id="minLengthInput" value="5" min="1" step="1">
                         </div>
                         <div class="input-group">
                             <label>Detection Threshold:</label>
@@ -730,54 +594,130 @@
                     </div>
                 </div>
 
-                <button class="analyze-btn" id="analyzeBtn" onclick="analyzeResults()" disabled>
-                    Generate Analysis Report
-                </button>
+                <button class="analyze-btn" id="analyzeBtn" onclick="analyzeResults(true)" disabled>Generate Analysis Report</button>
+                <button class="export-btn" id="exportBtn" onclick="exportToCSV()" disabled>Export Data to CSV</button>
+                <button class="export-btn" id="saveImageBtn" onclick="saveNeuriteImage()" disabled style="margin-top: 10px;">Save Labeled Image</button>
+            </div>
+        </div>
 
-                <button class="export-btn" id="exportBtn" onclick="exportToCSV()" disabled>
-                    Export Data to CSV
-                </button>
-
-                <button class="export-btn" id="saveImageBtn" onclick="saveNeuriteImage()" disabled style="margin-top: 10px;">
-                    Save Labeled Image
-                </button>
+        <!-- TIFF Conversion Modal -->
+        <div class="tiff-modal" id="tiffModal" style="display: none;">
+            <div class="tiff-modal-content">
+                <div class="tiff-header">
+                    <h2>📁 TIFF File Detected</h2>
+                    <button class="close-modal" onclick="closeTiffModal()">&times;</button>
+                </div>
+                <div class="tiff-body">
+                    <div class="file-info">
+                        <p><strong>📁 Your File:</strong></p>
+                        <p><strong>Name:</strong> <span id="tiffFileName">filename.tif</span></p>
+                        <p><strong>Size:</strong> <span id="tiffFileSize">0 MB</span></p>
+                        <p><strong>Format:</strong> TIFF/TIF</p>
+                    </div>
+                    
+                    <h3>🎯 Choose Your Conversion Method</h3>
+                    
+                    <div class="conversion-methods">
+                        <div class="method-card recommended">
+                            <div class="method-header">
+                                <h4>🥇 ImageJ/Fiji (Recommended for Scientific Images)</h4>
+                            </div>
+                            <div class="method-content">
+                                <p><strong>Why ImageJ is perfect for your neurite analysis:</strong></p>
+                                <ul>
+                                    <li>Designed specifically for scientific images</li>
+                                    <li>Preserves image quality and metadata</li>
+                                    <li>Handles complex TIFF formats (16-bit, multi-channel, etc.)</li>
+                                    <li>Free and widely used in neuroscience research</li>
+                                </ul>
+                                <p><strong>Quick Steps:</strong></p>
+                                <ol>
+                                    <li>Download: <a href="https://imagej.nih.gov/ij/download.html" target="_blank">imagej.nih.gov/ij/download.html</a></li>
+                                    <li>Open ImageJ → File → Open → Select your TIFF</li>
+                                    <li>If needed: Image → Type → 8-bit</li>
+                                    <li>File → Save As → PNG</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="method-card">
+                            <div class="method-header">
+                                <h4>🌐 Online Converter (Quick & Easy)</h4>
+                            </div>
+                            <div class="method-content">
+                                <p><strong>Perfect for quick conversions:</strong></p>
+                                <ul>
+                                    <li>No software installation required</li>
+                                    <li>Works on any device with internet</li>
+                                    <li>Usually handles standard TIFF formats well</li>
+                                </ul>
+                                <p><strong>Recommended Sites:</strong></p>
+                                <ul>
+                                    <li><a href="https://convertio.co/tiff-png" target="_blank">convertio.co/tiff-png</a></li>
+                                    <li><a href="https://cloudconvert.com/tiff-to-png" target="_blank">cloudconvert.com/tiff-to-png</a></li>
+                                    <li><a href="https://zamzar.com/convert/tiff-to-png" target="_blank">zamzar.com/convert/tiff-to-png</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="method-card">
+                            <div class="method-header">
+                                <h4>🎨 GIMP (Free Graphics Software)</h4>
+                            </div>
+                            <div class="method-content">
+                                <p><strong>Good for general image editing:</strong></p>
+                                <ul>
+                                    <li>Free alternative to Photoshop</li>
+                                    <li>Handles most TIFF formats</li>
+                                    <li>Additional image editing capabilities</li>
+                                </ul>
+                                <p><strong>Steps:</strong></p>
+                                <ol>
+                                    <li>Download: <a href="https://gimp.org/downloads" target="_blank">gimp.org/downloads</a></li>
+                                    <li>Open GIMP → File → Open → Select your TIFF</li>
+                                    <li>If needed: Image → Mode → RGB</li>
+                                    <li>File → Export As → Choose PNG format</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pro-tips">
+                        <h4>💡 Pro Tips for Best Results:</h4>
+                        <ul>
+                            <li><strong>Preserve Quality:</strong> Choose PNG format (lossless compression)</li>
+                            <li><strong>For Scientific Images:</strong> Use ImageJ - it's designed for your workflow</li>
+                            <li><strong>Check Image Depth:</strong> Convert to 8-bit if your TIFF is 16-bit</li>
+                            <li><strong>Maintain Scale:</strong> Note any scale information from your microscope</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="action-btn primary" onclick="closeTiffModal()">✅ Got it! I'll convert my TIFF file</button>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="results-section" id="resultsSection" style="display: none;">
             <h2>Analysis Results</h2>
-            
-            <div class="chart-container">
-                <canvas id="comparisonChart"></canvas>
-            </div>
-
+            <div class="chart-container"><canvas id="comparisonChart"></canvas></div>
             <div class="stats-grid">
-                <div class="stat-card total">
-                    <div class="stat-value" id="totalNeurites">0</div>
-                    <div class="stat-label">Total Neurites</div>
-                </div>
-                <div class="stat-card longest">
-                    <div class="stat-value" id="longestNeurite">0 μm</div>
-                    <div class="stat-label">Longest Neurite</div>
-                </div>
-                <div class="stat-card regenerative">
-                    <div class="stat-value" id="averageLength">0 μm</div>
-                    <div class="stat-label">Average Length</div>
-                </div>
+                <div class="stat-card total"><div class="stat-value" id="totalNeurites">0</div><div class="stat-label">Total Neurites</div></div>
+                <div class="stat-card longest"><div class="stat-value" id="longestNeurite">0 μm</div><div class="stat-label">Longest Neurite</div></div>
+                <div class="stat-card regenerative"><div class="stat-value" id="averageLength">0 μm</div><div class="stat-label">Average Length</div></div>
             </div>
-
-            <div class="detailed-results" id="detailedResults">
-            </div>
+            <div class="detailed-results" id="detailedResults"></div>
         </div>
     </div>
 
     <script>
         let canvas, ctx;
         let originalImage = null;
-        let adjustedCanvas = null; // For brightness/contrast adjustments
+        let adjustedCanvas = null;
         let currentTool = 'midline';
         let midline = null;
-        let analysisArea = null; // Yellow area for neurite detection
+        let analysisArea = null;
         let exclusionZones = [];
         let exclusionMode = 'freeform';
         let currentFreeformZone = [];
@@ -785,16 +725,15 @@
         let isDrawing = false;
         let currentExclusionZone = null;
         let currentAreaPoints = [];
-        let scale = 0.5; // Changed default to 0.5
-        let selectedSide = null; // 'left' or 'right'
+        let newNeuriteStartPoint = null;
+        let scale = 0.5;
+        let selectedSide = null;
         let brightness = 100;
         let contrast = 100;
 
-        // Initialize the application
         function initializeApp() {
             canvas = document.getElementById('analysisCanvas');
-            ctx = canvas.getContext('2d');
-            
+            ctx = canvas.getContext('2d', { willReadFrequently: true });
             setupEventListeners();
             updateStatus("Ready to analyze. Upload an image to begin.");
         }
@@ -802,387 +741,274 @@
         function setupEventListeners() {
             const imageInput = document.getElementById('imageInput');
             const uploadSection = document.getElementById('uploadSection');
-
-            // File upload
             imageInput.addEventListener('change', handleImageUpload);
-            
-            // New image upload
             const newImageInput = document.getElementById('newImageInput');
             newImageInput.addEventListener('change', handleNewImageUpload);
             
-            // Drag and drop
-            uploadSection.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                uploadSection.classList.add('dragover');
-            });
-
-            uploadSection.addEventListener('dragleave', () => {
-                uploadSection.classList.remove('dragover');
-            });
-
+            uploadSection.addEventListener('dragover', (e) => { e.preventDefault(); uploadSection.classList.add('dragover'); });
+            uploadSection.addEventListener('dragleave', () => { uploadSection.classList.remove('dragover'); });
             uploadSection.addEventListener('drop', (e) => {
                 e.preventDefault();
                 uploadSection.classList.remove('dragover');
-                const files = e.dataTransfer.files;
-                if (files.length > 0) {
-                    handleImageFile(files[0]);
-                }
+                if (e.dataTransfer.files.length > 0) handleImageFile(e.dataTransfer.files[0]);
             });
 
-            // Canvas events
             canvas.addEventListener('mousedown', startDrawing);
             canvas.addEventListener('mousemove', draw);
             canvas.addEventListener('mouseup', stopDrawing);
             canvas.addEventListener('click', handleCanvasClick);
             canvas.addEventListener('dblclick', handleCanvasDoubleClick);
-
-            // Brightness and contrast sliders
             setupSliders();
-
-            // Scale input
             document.getElementById('scaleInput').addEventListener('change', (e) => {
-                scale = parseFloat(e.target.value) || 0.5; // Changed default to 0.5
-                if (detectedNeurites.length > 0) {
-                    redrawCanvas();
-                    updateStatus("Scale updated. Click Auto-Detect to re-run analysis.");
-                }
+                scale = parseFloat(e.target.value) || 0.5;
+                if (detectedNeurites.length > 0) updateAllResults();
             });
         }
 
         function setupSliders() {
             const brightnessSlider = document.getElementById('brightnessSlider');
             const contrastSlider = document.getElementById('contrastSlider');
-            const brightnessValue = document.getElementById('brightnessValue');
-            const contrastValue = document.getElementById('contrastValue');
-
             brightnessSlider.addEventListener('input', (e) => {
                 brightness = parseInt(e.target.value);
-                brightnessValue.textContent = brightness + '%';
+                document.getElementById('brightnessValue').textContent = brightness + '%';
                 applyImageAdjustments();
             });
-
             contrastSlider.addEventListener('input', (e) => {
                 contrast = parseInt(e.target.value);
-                contrastValue.textContent = contrast + '%';
+                document.getElementById('contrastValue').textContent = contrast + '%';
                 applyImageAdjustments();
             });
         }
 
         function applyImageAdjustments() {
             if (!originalImage) return;
-
-            // Create an off-screen canvas for processing
-            if (!adjustedCanvas) {
-                adjustedCanvas = document.createElement('canvas');
-            }
-
+            if (!adjustedCanvas) adjustedCanvas = document.createElement('canvas');
             adjustedCanvas.width = canvas.width;
             adjustedCanvas.height = canvas.height;
-            const adjustedCtx = adjustedCanvas.getContext('2d');
-
-            // Draw original image to fill entire canvas
-            adjustedCtx.clearRect(0, 0, adjustedCanvas.width, adjustedCanvas.height);
+            const adjustedCtx = adjustedCanvas.getContext('2d', { willReadFrequently: true });
+            adjustedCtx.filter = `brightness(${brightness}%) contrast(${contrast}%)`;
             adjustedCtx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
-
-            // Apply brightness and contrast adjustments
-            const imageData = adjustedCtx.getImageData(0, 0, adjustedCanvas.width, adjustedCanvas.height);
-            const data = imageData.data;
-
-            const brightnessAdjustment = (brightness / 100) - 1;
-            const contrastAdjustment = contrast / 100;
-
-            for (let i = 0; i < data.length; i += 4) {
-                // Apply contrast
-                data[i] = (data[i] - 128) * contrastAdjustment + 128;     // Red
-                data[i + 1] = (data[i + 1] - 128) * contrastAdjustment + 128; // Green
-                data[i + 2] = (data[i + 2] - 128) * contrastAdjustment + 128; // Blue
-
-                // Apply brightness
-                data[i] += brightnessAdjustment * 255;     // Red
-                data[i + 1] += brightnessAdjustment * 255; // Green
-                data[i + 2] += brightnessAdjustment * 255; // Blue
-
-                // Clamp values
-                data[i] = Math.max(0, Math.min(255, data[i]));
-                data[i + 1] = Math.max(0, Math.min(255, data[i + 1]));
-                data[i + 2] = Math.max(0, Math.min(255, data[i + 2]));
-            }
-
-            adjustedCtx.putImageData(imageData, 0, 0);
+            adjustedCtx.filter = 'none';
             redrawCanvas();
         }
 
-        function handleImageUpload(e) {
-            const file = e.target.files[0];
-            handleImageFile(file);
-        }
-
+        function handleImageUpload(e) { handleImageFile(e.target.files[0]); }
         function handleNewImageUpload(e) {
-            const file = e.target.files[0];
-            if (file) {
+            if (e.target.files[0]) {
                 resetAnalysis();
-                handleImageFile(file);
-                updateStatus("New image loaded. Starting fresh analysis...");
+                handleImageFile(e.target.files[0]);
             }
         }
 
         function handleImageFile(file) {
             if (!file) return;
-
+            
+            // Check if the file is a TIFF
+            if (file.type === 'image/tiff' || file.type === 'image/tif' || 
+                file.name.toLowerCase().endsWith('.tif') || file.name.toLowerCase().endsWith('.tiff')) {
+                showTiffModal(file);
+                return;
+            }
+            
             const reader = new FileReader();
             reader.onload = (e) => {
-                const img = new Image();
-                img.onload = () => {
-                    originalImage = img;
-                    setupCanvas(img);
-                    displayImageInfo(img, file);
+                originalImage = new Image();
+                originalImage.onload = () => {
+                    setupCanvas(originalImage);
+                    displayImageInfo(originalImage, file);
                     resetAnalysis();
                     applyImageAdjustments();
                 };
-                img.src = e.target.result;
+                originalImage.src = e.target.result;
             };
             reader.readAsDataURL(file);
         }
 
         function setupCanvas(img) {
-            // Set fixed canvas size to 640x480 to fill the container completely
             canvas.width = 640;
             canvas.height = 480;
-            
-            // Show relevant sections
             document.getElementById('uploadSection').style.display = 'none';
             document.getElementById('newImageButtonContainer').style.display = 'block';
-            document.getElementById('imageContainer').style.display = 'block';
+            document.getElementById('imageContainer').style.display = 'flex';
             document.getElementById('toolsSection').style.display = 'block';
-            
-            updateStatus("Step 1: Draw a midline to separate left and right sides");
+            updateStatus("Step 1: Draw a midline.");
         }
 
         function displayImageInfo(img, file) {
-            const info = document.getElementById('imageInfo');
-            const details = document.getElementById('imageDetails');
-            
-            details.innerHTML = `
+            document.getElementById('imageDetails').innerHTML = `
                 <strong>File:</strong> ${file.name}<br>
-                <strong>Original Size:</strong> ${img.width} × ${img.height} pixels<br>
-                <strong>Display Size:</strong> 640 × 480 pixels (480P)<br>
-                <strong>File Size:</strong> ${(file.size / 1024).toFixed(1)} KB
-            `;
-            
-            info.style.display = 'block';
+                <strong>Size:</strong> ${img.width} × ${img.height} px<br>
+                <strong>File Size:</strong> ${(file.size / 1024).toFixed(1)} KB`;
+            document.getElementById('imageInfo').style.display = 'block';
         }
 
         function resetAnalysis() {
-            // Clear all analysis data
-            midline = null;
-            analysisArea = null;
-            exclusionZones = [];
-            currentFreeformZone = [];
-            currentAreaPoints = [];
-            detectedNeurites = [];
-            currentExclusionZone = null;
-            selectedSide = null;
+            midline = null; analysisArea = null; exclusionZones = [];
+            currentFreeformZone = []; currentAreaPoints = []; detectedNeurites = [];
+            currentExclusionZone = null; selectedSide = null; newNeuriteStartPoint = null;
             
-            // Reset button states
-            document.getElementById('midlineBtn').disabled = false;
-            document.getElementById('selectSideBtn').disabled = true;
-            document.getElementById('areaBtn').disabled = true;
-            document.getElementById('excludeBtn').disabled = true;
-            document.getElementById('detectBtn').disabled = true;
-            document.getElementById('analyzeBtn').disabled = true;
-            document.getElementById('exportBtn').disabled = true;
-            document.getElementById('saveImageBtn').disabled = true;
+            ['midlineBtn', 'selectSideBtn', 'areaBtn', 'excludeBtn', 'detectBtn', 'addBtn', 'removeBtn', 'clearAutoBtn', 'analyzeBtn', 'exportBtn', 'saveImageBtn'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.disabled = id !== 'midlineBtn';
+                    btn.classList.remove('active');
+                }
+            });
+            document.getElementById('midlineBtn').classList.add('active');
             
-            // Hide sections
-            document.getElementById('exclusionModeGroup').style.display = 'none';
-            document.getElementById('sideSelectionHint').style.display = 'none';
-            document.getElementById('regenDisplay').style.display = 'none';
-            document.getElementById('resultsSection').style.display = 'none';
-            
-            // Reset labels
+            ['exclusionModeGroup', 'sideSelectionHint', 'regenDisplay', 'resultsSection'].forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
             document.getElementById('sideLabel').textContent = 'Selected Side';
-            
-            // Reset counters
             resetCounters();
-            
             setTool('midline');
         }
 
         function setTool(tool) {
             currentTool = tool;
+            newNeuriteStartPoint = null;
             
-            // Update button states
+            if(tool === 'detect') {
+                detectNeurites();
+                return;
+            }
+
             document.querySelectorAll('.tool-btn').forEach(btn => btn.classList.remove('active'));
             if (document.getElementById(tool + 'Btn')) {
                 document.getElementById(tool + 'Btn').classList.add('active');
             }
 
-            // Show/hide sections based on tool
-            if (tool === 'exclude') {
-                document.getElementById('exclusionModeGroup').style.display = 'block';
-            } else {
-                document.getElementById('exclusionModeGroup').style.display = 'none';
-            }
-
-            if (tool === 'selectSide') {
-                document.getElementById('sideSelectionHint').style.display = 'block';
-            } else {
-                document.getElementById('sideSelectionHint').style.display = 'none';
-            }
+            document.getElementById('exclusionModeGroup').style.display = tool === 'exclude' ? 'block' : 'none';
+            document.getElementById('sideSelectionHint').style.display = tool === 'selectSide' ? 'block' : 'none';
             
-            // Update cursor and status
+            let status = "", cursor = "default";
             switch(tool) {
-                case 'midline':
-                    canvas.style.cursor = 'crosshair';
-                    updateStatus("Click and drag to draw a midline separating left and right sides");
-                    break;
-                case 'selectSide':
-                    canvas.style.cursor = 'pointer';
-                    updateStatus("Click on the side you want to analyze (left or right)");
-                    break;
-                case 'area':
-                    canvas.style.cursor = 'crosshair';
-                    updateStatus("Click multiple points to define the yellow analysis area (double-click to finish)");
-                    break;
-                case 'exclude':
-                    canvas.style.cursor = 'crosshair';
-                    const modeText = exclusionMode === 'rectangle' ? 
-                        "Click and drag to draw rectangles around areas to exclude" :
-                        "Click multiple points to draw freeform exclusion zones (double-click to finish)";
-                    updateStatus(modeText);
-                    break;
+                case 'midline':    status = "Click and drag to draw a midline."; cursor = "crosshair"; break;
+                case 'selectSide': status = "Click on the side to analyze."; cursor = "pointer"; break;
+                case 'area':       status = "Click points to define analysis area (double-click to finish)."; cursor = "crosshair"; break;
+                case 'exclude':    status = `Draw ${exclusionMode} exclusion zones.`; cursor = "crosshair"; break;
+                case 'add':        status = "Click a start point, then an end point to add a new neurite."; cursor = "cell"; break;
+                case 'remove':     status = "Click near a neurite's endpoint to remove it."; cursor = "pointer"; break;
             }
+            updateStatus(status);
+            canvas.style.cursor = cursor;
         }
 
         function setExclusionMode(mode) {
             exclusionMode = mode;
-            
-            // Update button states
             document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(mode + 'Mode').classList.add('active');
-            
-            if (currentTool === 'exclude') {
-                setTool('exclude'); // Update status message
-            }
+            if (currentTool === 'exclude') setTool('exclude');
         }
 
         function startDrawing(e) {
-            if (currentTool !== 'midline' && currentTool !== 'exclude') return;
-            
+            if (currentTool !== 'midline' && (currentTool !== 'exclude' || exclusionMode !== 'rectangle')) return;
             isDrawing = true;
             const pos = getMousePos(e);
-            
             if (currentTool === 'midline') {
                 midline = [pos];
-            } else if (currentTool === 'exclude' && exclusionMode === 'rectangle') {
-                currentExclusionZone = {
-                    type: 'rectangle',
-                    startX: pos.x,
-                    startY: pos.y,
-                    endX: pos.x,
-                    endY: pos.y
-                };
+            } else {
+                currentExclusionZone = { type: 'rectangle', startX: pos.x, startY: pos.y, endX: pos.x, endY: pos.y };
             }
         }
 
         function draw(e) {
             if (!isDrawing) return;
-            
             const pos = getMousePos(e);
-            
+            redrawCanvas();
             if (currentTool === 'midline' && midline && midline.length === 1) {
-                redrawCanvas();
-                drawTempLine(midline[0], pos, '#9b59b6', 3); // Purple color
+                drawTempLine(midline[0], pos, '#9b59b6', 3);
             } else if (currentTool === 'exclude' && exclusionMode === 'rectangle' && currentExclusionZone) {
                 currentExclusionZone.endX = pos.x;
                 currentExclusionZone.endY = pos.y;
-                redrawCanvas();
                 drawTempExclusionZone(currentExclusionZone);
             }
         }
 
         function stopDrawing(e) {
             if (!isDrawing) return;
-            
+            isDrawing = false;
             const pos = getMousePos(e);
-            
             if (currentTool === 'midline' && midline && midline.length === 1) {
                 midline.push(pos);
-                redrawCanvas();
-                
-                // Enable side selection
                 document.getElementById('selectSideBtn').disabled = false;
                 setTool('selectSide');
-                updateStatus("Step 2: Click on the side you want to analyze");
             } else if (currentTool === 'exclude' && exclusionMode === 'rectangle' && currentExclusionZone) {
                 currentExclusionZone.endX = pos.x;
                 currentExclusionZone.endY = pos.y;
-                
-                // Only add if the zone has meaningful size
-                const width = Math.abs(currentExclusionZone.endX - currentExclusionZone.startX);
-                const height = Math.abs(currentExclusionZone.endY - currentExclusionZone.startY);
-                
-                if (width > 10 && height > 10) {
+                if (Math.abs(currentExclusionZone.endX - currentExclusionZone.startX) > 10 && Math.abs(currentExclusionZone.endY - currentExclusionZone.startY) > 10) {
                     exclusionZones.push({...currentExclusionZone});
-                    redrawCanvas();
-                    updateStatus(`Added exclusion zone ${exclusionZones.length}. Draw more zones or proceed to detection.`);
                 }
-                
                 currentExclusionZone = null;
             }
-            
-            isDrawing = false;
+            redrawCanvas();
         }
 
         function handleCanvasClick(e) {
             const pos = getMousePos(e);
-            
-            if (currentTool === 'selectSide') {
-                // Determine which side was clicked
-                selectedSide = isLeftSide(pos) ? 'left' : 'right';
-                
-                updateStatus(`${selectedSide.charAt(0).toUpperCase() + selectedSide.slice(1)} side selected for analysis.`);
-                document.getElementById('sideLabel').textContent = `${selectedSide.charAt(0).toUpperCase() + selectedSide.slice(1)} Side`;
-                document.getElementById('sideSelectionHint').style.display = 'none';
-                
-                // Enable area selection
-                document.getElementById('areaBtn').disabled = false;
-                setTool('area');
-                updateStatus("Step 3: Define the yellow analysis area by clicking points");
-                
-            } else if (currentTool === 'area') {
-                currentAreaPoints.push(pos);
-                redrawCanvas();
-                
-            } else if (currentTool === 'exclude' && exclusionMode === 'freeform') {
-                currentFreeformZone.push(pos);
-                redrawCanvas();
+            switch(currentTool) {
+                case 'selectSide':
+                    selectedSide = isLeftSide(pos) ? 'left' : 'right';
+                    document.getElementById('sideLabel').textContent = `${selectedSide.charAt(0).toUpperCase() + selectedSide.slice(1)} Side`;
+                    document.getElementById('areaBtn').disabled = false;
+                    setTool('area');
+                    break;
+                case 'area':
+                    currentAreaPoints.push(pos);
+                    redrawCanvas();
+                    break;
+                case 'exclude':
+                    if (exclusionMode === 'freeform') {
+                        currentFreeformZone.push(pos);
+                        redrawCanvas();
+                    }
+                    break;
+                case 'remove':
+                    const neuriteToRemove = findNeuriteNearPoint(pos);
+                    if (neuriteToRemove && confirm('Are you sure you want to delete this neurite?')) {
+                        detectedNeurites = detectedNeurites.filter(n => n !== neuriteToRemove);
+                        updateAllResults();
+                    }
+                    break;
+                case 'add':
+                    if (!midline) {
+                        alert("Please draw a midline first before adding neurites.");
+                        return;
+                    }
+                    if (!newNeuriteStartPoint) {
+                        newNeuriteStartPoint = pos;
+                        updateStatus("Start point selected. Click again to set the end point.");
+                        redrawCanvas();
+                    } else {
+                        const newNeurite = {
+                            startpoint: newNeuriteStartPoint,
+                            endpoint: pos,
+                            path: [newNeuriteStartPoint, pos],
+                            manual: true,
+                            length: Math.hypot(pos.x - newNeuriteStartPoint.x, pos.y - newNeuriteStartPoint.y) / scale,
+                            distanceFromMidline: calculateDistanceFromMidline(pos)
+                        };
+                        detectedNeurites.push(newNeurite);
+                        newNeuriteStartPoint = null;
+                        updateAllResults();
+                        setTool('add');
+                    }
+                    break;
             }
         }
 
         function handleCanvasDoubleClick(e) {
             if (currentTool === 'area' && currentAreaPoints.length >= 3) {
-                analysisArea = {
-                    type: 'polygon',
-                    points: [...currentAreaPoints]
-                };
+                analysisArea = { type: 'polygon', points: [...currentAreaPoints] };
                 currentAreaPoints = [];
-                redrawCanvas();
-                
-                // Enable exclusion zones and detection
                 document.getElementById('excludeBtn').disabled = false;
                 document.getElementById('detectBtn').disabled = false;
-                updateStatus("Analysis area defined! Optionally add exclusion zones, then run detection.");
-                
+                setTool('exclude');
             } else if (currentTool === 'exclude' && exclusionMode === 'freeform' && currentFreeformZone.length >= 3) {
-                exclusionZones.push({
-                    type: 'freeform',
-                    points: [...currentFreeformZone]
-                });
+                exclusionZones.push({ type: 'freeform', points: [...currentFreeformZone] });
                 currentFreeformZone = [];
-                redrawCanvas();
-                updateStatus(`Added freeform exclusion zone ${exclusionZones.length}. Draw more zones or proceed to detection.`);
             }
+            redrawCanvas();
         }
 
         function getMousePos(e) {
@@ -1192,1021 +1018,277 @@
                 y: (e.clientY - rect.top) * (canvas.height / rect.height)
             };
         }
+        
+        function findNeuriteNearPoint(point) {
+            const clickRadius = 10;
+            return detectedNeurites.find(neurite => Math.hypot(neurite.endpoint.x - point.x, neurite.endpoint.y - point.y) < clickRadius);
+        }
 
         function drawTempLine(start, end, color, width) {
-            ctx.strokeStyle = color;
-            ctx.lineWidth = width;
-            ctx.setLineDash([5, 5]);
-            ctx.beginPath();
-            ctx.moveTo(start.x, start.y);
-            ctx.lineTo(end.x, end.y);
-            ctx.stroke();
-            ctx.setLineDash([]);
+            ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = width; ctx.setLineDash([5, 5]);
+            ctx.beginPath(); ctx.moveTo(start.x, start.y); ctx.lineTo(end.x, end.y); ctx.stroke();
+            ctx.restore();
         }
 
         function drawTempExclusionZone(zone) {
-            ctx.strokeStyle = '#ff0000';
-            ctx.fillStyle = 'rgba(255, 0, 0, 0.2)';
-            ctx.lineWidth = 2;
-            ctx.setLineDash([5, 5]);
-            
-            const x = Math.min(zone.startX, zone.endX);
-            const y = Math.min(zone.startY, zone.endY);
-            const width = Math.abs(zone.endX - zone.startX);
-            const height = Math.abs(zone.endY - zone.startY);
-            
-            ctx.fillRect(x, y, width, height);
-            ctx.strokeRect(x, y, width, height);
-            ctx.setLineDash([]);
+            ctx.save(); ctx.strokeStyle = '#ff0000'; ctx.fillStyle = 'rgba(255, 0, 0, 0.2)';
+            ctx.lineWidth = 2; ctx.setLineDash([5, 5]);
+            const x = Math.min(zone.startX, zone.endX), y = Math.min(zone.startY, zone.endY);
+            const w = Math.abs(zone.endX - zone.startX), h = Math.abs(zone.endY - zone.startY);
+            ctx.fillRect(x, y, w, h); ctx.strokeRect(x, y, w, h);
+            ctx.restore();
         }
 
         function redrawCanvas() {
-            // Clear and redraw image to fill entire canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (adjustedCanvas) ctx.drawImage(adjustedCanvas, 0, 0);
+            else if (originalImage) ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+
+            if (midline && midline.length === 2) drawDistanceLines();
             
-            if (adjustedCanvas) {
-                ctx.drawImage(adjustedCanvas, 0, 0);
-            } else if (originalImage) {
-                ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
-            }
-
-            // Draw distance lines parallel to midline
             if (midline && midline.length === 2) {
-                drawDistanceLines();
+                ctx.save(); ctx.strokeStyle = '#9b59b6'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(midline[0].x, midline[0].y); ctx.lineTo(midline[1].x, midline[1].y); ctx.stroke();
+                ctx.restore();
             }
 
-            // Draw midline in purple
-            if (midline && midline.length === 2) {
-                ctx.strokeStyle = '#9b59b6'; // Purple color
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                ctx.moveTo(midline[0].x, midline[0].y);
-                ctx.lineTo(midline[1].x, midline[1].y);
-                ctx.stroke();
-                
-                // Add label
-                ctx.fillStyle = '#9b59b6';
-                ctx.font = 'bold 14px Arial';
-                ctx.fillText('Midline', midline[0].x + 10, midline[0].y - 10);
-            }
-
-            // Draw analysis area (yellow)
             if (analysisArea && analysisArea.points) {
-                ctx.strokeStyle = '#FFD700';
-                ctx.fillStyle = 'rgba(255, 215, 0, 0.2)';
-                ctx.lineWidth = 3;
-                
-                ctx.beginPath();
-                ctx.moveTo(analysisArea.points[0].x, analysisArea.points[0].y);
-                for (let i = 1; i < analysisArea.points.length; i++) {
-                    ctx.lineTo(analysisArea.points[i].x, analysisArea.points[i].y);
-                }
-                ctx.closePath();
-                ctx.fill();
-                ctx.stroke();
-                
-                // Add label
-                ctx.fillStyle = '#DAA520';
-                ctx.font = 'bold 14px Arial';
-                ctx.fillText('ANALYSIS AREA', analysisArea.points[0].x + 10, analysisArea.points[0].y + 20);
+                ctx.save(); ctx.strokeStyle = '#FFD700'; ctx.fillStyle = 'rgba(255, 215, 0, 0.2)'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(analysisArea.points[0].x, analysisArea.points[0].y);
+                for (let i = 1; i < analysisArea.points.length; i++) ctx.lineTo(analysisArea.points[i].x, analysisArea.points[i].y);
+                ctx.closePath(); ctx.fill(); ctx.stroke();
+                ctx.restore();
             }
 
-            // Draw current area points
             if (currentAreaPoints.length > 0) {
-                ctx.strokeStyle = '#FFD700';
-                ctx.lineWidth = 2;
-                
                 if (currentAreaPoints.length > 1) {
-                    ctx.beginPath();
-                    ctx.moveTo(currentAreaPoints[0].x, currentAreaPoints[0].y);
-                    for (let i = 1; i < currentAreaPoints.length; i++) {
-                        ctx.lineTo(currentAreaPoints[i].x, currentAreaPoints[i].y);
-                    }
-                    ctx.stroke();
+                    ctx.save(); ctx.strokeStyle = '#FFD700'; ctx.lineWidth = 2; ctx.setLineDash([5, 5]);
+                    ctx.beginPath(); ctx.moveTo(currentAreaPoints[0].x, currentAreaPoints[0].y);
+                    for (let i = 1; i < currentAreaPoints.length; i++) ctx.lineTo(currentAreaPoints[i].x, currentAreaPoints[i].y);
+                    ctx.stroke(); ctx.restore();
                 }
-                
-                // Draw points
-                currentAreaPoints.forEach((point, index) => {
-                    ctx.fillStyle = '#FFD700';
-                    ctx.beginPath();
-                    ctx.arc(point.x, point.y, 5, 0, 2 * Math.PI);
-                    ctx.fill();
-                });
+                currentAreaPoints.forEach(p => { ctx.save(); ctx.fillStyle = '#FFD700'; ctx.beginPath(); ctx.arc(p.x, p.y, 5, 0, 2 * Math.PI); ctx.fill(); ctx.restore(); });
             }
-
-            // Draw exclusion zones (red)
-            exclusionZones.forEach((zone, index) => {
-                ctx.strokeStyle = '#ff0000';
-                ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
-                ctx.lineWidth = 2;
-                
-                if (zone.type === 'rectangle') {
-                    const x = Math.min(zone.startX, zone.endX);
-                    const y = Math.min(zone.startY, zone.endY);
-                    const width = Math.abs(zone.endX - zone.startX);
-                    const height = Math.abs(zone.endY - zone.startY);
-                    
-                    ctx.fillRect(x, y, width, height);
-                    ctx.strokeRect(x, y, width, height);
-                    
-                    // Add label
-                    ctx.fillStyle = '#ff0000';
-                    ctx.font = 'bold 12px Arial';
-                    ctx.fillText(`EXCLUDE ${index + 1}`, x + 5, y + 15);
-                } else if (zone.type === 'freeform' && zone.points.length >= 3) {
-                    ctx.beginPath();
-                    ctx.moveTo(zone.points[0].x, zone.points[0].y);
-                    for (let i = 1; i < zone.points.length; i++) {
-                        ctx.lineTo(zone.points[i].x, zone.points[i].y);
-                    }
-                    ctx.closePath();
-                    ctx.fill();
-                    ctx.stroke();
-                    
-                    // Add label
-                    ctx.fillStyle = '#ff0000';
-                    ctx.font = 'bold 12px Arial';
-                    ctx.fillText(`EXCLUDE ${index + 1}`, zone.points[0].x + 5, zone.points[0].y - 5);
-                }
-            });
-
-            // Draw current freeform zone
+            
             if (currentFreeformZone.length > 0) {
                 if (currentFreeformZone.length > 1) {
-                    ctx.strokeStyle = '#ff0000';
-                    ctx.lineWidth = 2;
-                    ctx.setLineDash([5, 5]);
-                    
-                    ctx.beginPath();
-                    ctx.moveTo(currentFreeformZone[0].x, currentFreeformZone[0].y);
-                    for (let i = 1; i < currentFreeformZone.length; i++) {
-                        ctx.lineTo(currentFreeformZone[i].x, currentFreeformZone[i].y);
-                    }
-                    ctx.stroke();
-                    ctx.setLineDash([]);
+                    ctx.save(); ctx.strokeStyle = '#ff0000'; ctx.lineWidth = 2; ctx.setLineDash([5, 5]);
+                    ctx.beginPath(); ctx.moveTo(currentFreeformZone[0].x, currentFreeformZone[0].y);
+                    for (let i = 1; i < currentFreeformZone.length; i++) ctx.lineTo(currentFreeformZone[i].x, currentFreeformZone[i].y);
+                    ctx.stroke(); ctx.restore();
                 }
-                
-                // Draw points
-                currentFreeformZone.forEach((point, index) => {
-                    ctx.fillStyle = '#ff0000';
-                    ctx.beginPath();
-                    ctx.arc(point.x, point.y, 4, 0, 2 * Math.PI);
-                    ctx.fill();
-                });
+                currentFreeformZone.forEach(p => { ctx.save(); ctx.fillStyle = '#ff0000'; ctx.beginPath(); ctx.arc(p.x, p.y, 5, 0, 2 * Math.PI); ctx.fill(); ctx.restore(); });
             }
 
-            // Draw detected neurites
+            exclusionZones.forEach(zone => {
+                ctx.save(); ctx.strokeStyle = '#ff0000'; ctx.fillStyle = 'rgba(255, 0, 0, 0.3)'; ctx.lineWidth = 2;
+                if (zone.type === 'rectangle') {
+                    const x = Math.min(zone.startX, zone.endX), y = Math.min(zone.startY, zone.endY);
+                    const w = Math.abs(zone.endX - zone.startX), h = Math.abs(zone.endY - zone.startY);
+                    ctx.fillRect(x, y, w, h); ctx.strokeRect(x, y, w, h);
+                } else if (zone.type === 'freeform' && zone.points.length >= 3) {
+                    ctx.beginPath(); ctx.moveTo(zone.points[0].x, zone.points[0].y);
+                    for (let i = 1; i < zone.points.length; i++) ctx.lineTo(zone.points[i].x, zone.points[i].y);
+                    ctx.closePath(); ctx.fill(); ctx.stroke();
+                }
+                ctx.restore();
+            });
+            
+            if (newNeuriteStartPoint) {
+                ctx.save(); ctx.fillStyle = '#1abc9c'; ctx.beginPath();
+                ctx.arc(newNeuriteStartPoint.x, newNeuriteStartPoint.y, 5, 0, 2 * Math.PI);
+                ctx.fill(); ctx.restore();
+            }
+            
             drawDetectedNeurites();
         }
 
         function drawDistanceLines() {
             if (!midline || midline.length !== 2) return;
-            
-            const distances = [200, 400, 600, 800]; // micrometers
+            const distances = [200, 400, 600, 800];
             const colors = ['#00FF00', '#FFFF00', '#FF8C00', '#FF4500'];
-            
-            // Calculate midline vector and perpendicular
-            const midVecX = midline[1].x - midline[0].x;
-            const midVecY = midline[1].y - midline[0].y;
-            const midLength = Math.sqrt(midVecX * midVecX + midVecY * midVecY);
-            
-            // Perpendicular vector (for distance lines)
-            const perpX = -midVecY / midLength;
-            const perpY = midVecX / midLength;
-            
-            // Get midpoint of midline
-            const midX = (midline[0].x + midline[1].x) / 2;
-            const midY = (midline[0].y + midline[1].y) / 2;
+            const [p1, p2] = midline;
+            const midLength = Math.hypot(p2.x - p1.x, p2.y - p1.y);
+            if (midLength === 0) return;
+            const perpX = -(p2.y - p1.y) / midLength, perpY = (p2.x - p1.x) / midLength;
+            const midX = (p1.x + p2.x) / 2, midY = (p1.y + p2.y) / 2;
             
             distances.forEach((distance, index) => {
                 const pixelDistance = distance * scale;
-                
-                // Calculate positions for parallel lines on both sides
-                const side1X = midX + pixelDistance * perpX;
-                const side1Y = midY + pixelDistance * perpY;
-                const side2X = midX - pixelDistance * perpX;
-                const side2Y = midY - pixelDistance * perpY;
-                
-                // Calculate line direction (perpendicular to the perpendicular = parallel to original midline)
-                const lineVecX = midVecX / midLength;
-                const lineVecY = midVecY / midLength;
-                
-                // Extend lines across the full canvas
-                const extensionLength = Math.max(canvas.width, canvas.height);
-                
-                // Side 1 line (full length)
-                const line1StartX = side1X - extensionLength * lineVecX;
-                const line1StartY = side1Y - extensionLength * lineVecY;
-                const line1EndX = side1X + extensionLength * lineVecX;
-                const line1EndY = side1Y + extensionLength * lineVecY;
-                
-                // Side 2 line (full length)
-                const line2StartX = side2X - extensionLength * lineVecX;
-                const line2StartY = side2Y - extensionLength * lineVecY;
-                const line2EndX = side2X + extensionLength * lineVecX;
-                const line2EndY = side2Y + extensionLength * lineVecY;
-                
-                // Draw both parallel lines
-                ctx.strokeStyle = colors[index];
-                ctx.lineWidth = 2;
-                ctx.setLineDash([8, 4]);
-                
-                // Side 1 line
-                ctx.beginPath();
-                ctx.moveTo(line1StartX, line1StartY);
-                ctx.lineTo(line1EndX, line1EndY);
-                ctx.stroke();
-                
-                // Side 2 line
-                ctx.beginPath();
-                ctx.moveTo(line2StartX, line2StartY);
-                ctx.lineTo(line2EndX, line2EndY);
-                ctx.stroke();
-                
-                // Add distance labels (positioned better)
-                ctx.fillStyle = colors[index];
-                ctx.font = 'bold 12px Arial';
-                ctx.strokeStyle = 'rgba(0,0,0,0.7)';
-                ctx.lineWidth = 3;
-                
-                // Side 1 label with outline for readability
-                ctx.strokeText(`${distance}μm`, side1X + 5, side1Y - 5);
-                ctx.fillText(`${distance}μm`, side1X + 5, side1Y - 5);
-                
-                // Side 2 label with outline for readability  
-                ctx.strokeText(`${distance}μm`, side2X + 5, side2Y - 5);
-                ctx.fillText(`${distance}μm`, side2X + 5, side2Y - 5);
+                [-1, 1].forEach(side => {
+                    const sideX = midX + pixelDistance * perpX * side;
+                    const sideY = midY + pixelDistance * perpY * side;
+                    const lineVecX = (p2.x - p1.x) / midLength;
+                    const lineVecY = (p2.y - p1.y) / midLength;
+                    const extensionLength = Math.max(canvas.width, canvas.height);
+                    
+                    const lineStartX = sideX - extensionLength * lineVecX;
+                    const lineStartY = sideY - extensionLength * lineVecY;
+                    const lineEndX = sideX + extensionLength * lineVecX;
+                    const lineEndY = sideY + extensionLength * lineVecY;
+                    
+                    ctx.save();
+                    ctx.strokeStyle = colors[index]; ctx.lineWidth = 2; ctx.setLineDash([8, 4]);
+                    ctx.beginPath(); ctx.moveTo(lineStartX, lineStartY); ctx.lineTo(lineEndX, lineEndY); ctx.stroke();
+                    ctx.fillStyle = colors[index]; ctx.font = 'bold 12px Arial'; ctx.strokeStyle = 'rgba(0,0,0,0.7)'; ctx.lineWidth = 3;
+                    ctx.strokeText(`${distance}μm`, sideX + 5, sideY - 5);
+                    ctx.fillText(`${distance}μm`, sideX + 5, sideY - 5);
+                    ctx.restore();
+                });
             });
-            
-            ctx.setLineDash([]);
         }
-
+        
         function drawDetectedNeurites() {
-            detectedNeurites.forEach((neurite, index) => {
-                // Color based on distance from midline
-                let color = '#00FF00'; // Green for close
-                if (neurite.distanceFromMidline > 200) color = '#FFFF00'; // Yellow
-                if (neurite.distanceFromMidline > 400) color = '#FF8C00'; // Orange
-                if (neurite.distanceFromMidline > 600) color = '#FF4500'; // Red-orange
-                if (neurite.distanceFromMidline > 800) color = '#FF0000'; // Red
+            detectedNeurites.forEach((neurite) => {
+                let color = '#00FF00';
+                if (neurite.distanceFromMidline > 200) color = '#FFFF00';
+                if (neurite.distanceFromMidline > 400) color = '#FF8C00';
+                if (neurite.distanceFromMidline > 600) color = '#FF4500';
+                if (neurite.distanceFromMidline > 800) color = '#FF0000';
                 
-                // Draw the traced path if available
-                if (neurite.path && neurite.path.length > 1) {
-                    ctx.strokeStyle = color;
-                    ctx.lineWidth = 2;
-                    ctx.beginPath();
-                    ctx.moveTo(neurite.path[0].x, neurite.path[0].y);
-                    for (let i = 1; i < neurite.path.length; i++) {
-                        ctx.lineTo(neurite.path[i].x, neurite.path[i].y);
-                    }
-                    ctx.stroke();
-                } else {
-                    // Fallback: draw straight line
-                    ctx.strokeStyle = color;
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    ctx.moveTo(neurite.startpoint.x, neurite.startpoint.y);
-                    ctx.lineTo(neurite.endpoint.x, neurite.endpoint.y);
-                    ctx.stroke();
-                }
+                ctx.save();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(neurite.startpoint.x, neurite.startpoint.y);
+                ctx.lineTo(neurite.endpoint.x, neurite.endpoint.y);
+                ctx.stroke();
                 
-                // Draw endpoint marker
                 ctx.fillStyle = color;
                 ctx.beginPath();
-                ctx.arc(neurite.endpoint.x, neurite.endpoint.y, 3, 0, 2 * Math.PI);
+                ctx.arc(neurite.endpoint.x, neurite.endpoint.y, 4, 0, 2 * Math.PI);
                 ctx.fill();
+                ctx.restore();
             });
         }
 
-        function isLeftSide(point) {
-            if (!midline || midline.length !== 2) return false;
-            
-            // Calculate which side of the midline the point is on
-            const [p1, p2] = midline;
-            const crossProduct = (p2.x - p1.x) * (point.y - p1.y) - (p2.y - p1.y) * (point.x - p1.x);
-            return crossProduct > 0;
-        }
-
-        function isPointInExclusionZone(point) {
-            for (let zone of exclusionZones) {
-                if (zone.type === 'rectangle') {
-                    const minX = Math.min(zone.startX, zone.endX);
-                    const maxX = Math.max(zone.startX, zone.endX);
-                    const minY = Math.min(zone.startY, zone.endY);
-                    const maxY = Math.max(zone.startY, zone.endY);
-                    
-                    if (point.x >= minX && point.x <= maxX && point.y >= minY && point.y <= maxY) {
-                        return true;
-                    }
-                } else if (zone.type === 'freeform') {
-                    if (isPointInPolygon(point, zone.points)) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        function isPointInPolygon(point, polygon) {
-            let inside = false;
-            for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-                if (((polygon[i].y > point.y) !== (polygon[j].y > point.y)) &&
-                    (point.x < (polygon[j].x - polygon[i].x) * (point.y - polygon[i].y) / (polygon[j].y - polygon[i].y) + polygon[i].x)) {
-                    inside = !inside;
-                }
-            }
-            return inside;
-        }
-
-        function isPointInAnalysisArea(point) {
-            if (!analysisArea || !analysisArea.points) return false;
-            return isPointInPolygon(point, analysisArea.points);
-        }
-
-        function detectNeurites() {
-            if (!analysisArea || !midline || !selectedSide) {
-                updateStatus("Please complete all setup steps first");
-                return;
-            }
-
-            detectedNeurites = [];
-            resetCounters();
-            document.getElementById('regenDisplay').style.display = 'none';
-            
-            showProcessing(true);
-            updateStatus("Scanning midline for neurite starting points (neurites must originate from center line)...");
-            
-            setTimeout(() => {
-                let progress = 0;
-                const progressInterval = setInterval(() => {
-                    progress += 20;
-                    updateProgress(progress);
-                    
-                    if (progress >= 100) {
-                        clearInterval(progressInterval);
-                        performNeuriteDetection();
-                    }
-                }, 100);
-            }, 100);
-        }
+        function isLeftSide(point) { if (!midline || midline.length !== 2) return false; const [p1, p2] = midline; return (p2.x - p1.x) * (point.y - p1.y) - (p2.y - p1.y) * (point.x - p1.x) > 0; }
+        function isPointInPolygon(point, polygon) { let inside = false; for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) { if (((polygon[i].y > point.y) !== (polygon[j].y > point.y)) && (point.x < (polygon[j].x - polygon[i].x) * (point.y - polygon[i].y) / (polygon[j].y - polygon[i].y) + polygon[i].x)) inside = !inside; } return inside; }
+        function isPointInExclusionZone(point) { for (let zone of exclusionZones) { if (zone.type === 'rectangle') { const minX = Math.min(zone.startX, zone.endX), maxX = Math.max(zone.startX, zone.endX), minY = Math.min(zone.startY, zone.endY), maxY = Math.max(zone.startY, zone.endY); if (point.x >= minX && point.x <= maxX && point.y >= minY && point.y <= maxY) return true; } else if (zone.type === 'freeform') { if (isPointInPolygon(point, zone.points)) return true; } } return false; }
+        function isPointInAnalysisArea(point) { if (!analysisArea || !analysisArea.points) return false; return isPointInPolygon(point, analysisArea.points); }
 
         function performNeuriteDetection() {
-            // Get image data for processing
-            const imageData = adjustedCanvas ? 
-                adjustedCanvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height) :
-                ctx.getImageData(0, 0, canvas.width, canvas.height);
-            
-            const sensitivity = document.getElementById('sensitivitySelect').value;
-            
-            updateStatus("Tracing neurites from midline starting points towards selected side...");
-            
-            console.log("=== STARTING NEURITE DETECTION ===");
-            console.log(`Canvas size: ${canvas.width} x ${canvas.height}`);
-            console.log(`Selected side: ${selectedSide}, Scale: ${scale}`);
-            
-            // Perform actual image analysis
-            detectedNeurites = analyzeImageForNeurites(imageData, sensitivity);
-            
-            console.log(`=== DETECTION COMPLETE: Found ${detectedNeurites.length} neurites ===`);
-            
-            // Count neurites by distance categories
-            categorizeNeurites();
-            
-            // Update display
-            updateRegenerationDisplay();
-            
-            // Enable analysis and export
-            document.getElementById('analyzeBtn').disabled = false;
-            document.getElementById('exportBtn').disabled = false;
-            document.getElementById('saveImageBtn').disabled = false;
-            
+            try {
+                const imageData = adjustedCanvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+                const sensitivity = document.getElementById('sensitivitySelect').value;
+                detectedNeurites = analyzeImageForNeurites(imageData, sensitivity);
+                
+                ['addBtn', 'removeBtn', 'clearAutoBtn', 'analyzeBtn', 'exportBtn', 'saveImageBtn'].forEach(id => document.getElementById(id).disabled = false);
+                setTool('add');
+                updateAllResults();
+                updateStatus(`Detection complete! Found ${detectedNeurites.length} neurites.`);
+            } catch (error) {
+                console.error("Detection Error:", error);
+                updateStatus("An error occurred during detection. See console for details.");
+            } finally {
+                showProcessing(false);
+            }
+        }
+        
+        function detectNeurites() {
+            if (!analysisArea || !midline || !selectedSide) return updateStatus("Please complete all setup steps first");
+            showProcessing(true);
+            updateStatus("Scanning for neurites...");
+            setTimeout(performNeuriteDetection, 50);
+        }
+        
+        function updateAllResults() {
+            detectedNeurites.forEach(n => n.distanceFromMidline = calculateDistanceFromMidline(n.endpoint));
             redrawCanvas();
-            showProcessing(false);
-            
-            updateStatus(`Detection complete! Found ${detectedNeurites.length} neurites on ${selectedSide} side.`);
+            categorizeNeurites();
+            updateRegenerationDisplay();
+            analyzeResults(false);
         }
 
-        function analyzeImageForNeurites(imageData, sensitivity) {
-            const neurites = [];
-            const data = imageData.data;
-            const width = imageData.width;
-            const height = imageData.height;
-            
-            const threshold = parseFloat(document.getElementById('detectionThreshold').value) || 100; // Changed default to 100
-            const minLength = parseFloat(document.getElementById('minLengthInput').value) || 5;
-            
-            // Sensitivity adjustments
-            const thresholdAdjustments = {
-                'low': 40,
-                'medium': 0,
-                'high': -30
-            };
-            
-            const adjustedThreshold = threshold + thresholdAdjustments[sensitivity];
-            
-            // Find starting points along the midline
-            const startingPoints = findNeuriteStartingPoints(data, width, height, adjustedThreshold);
-            
-            // Trace neurites from each starting point
-            startingPoints.forEach(startPoint => {
-                const traces = traceNeuritesFromPoint(data, width, height, startPoint, adjustedThreshold, minLength);
-                neurites.push(...traces);
-            });
-            
-            return neurites;
-        }
-
-        function findNeuriteStartingPoints(data, width, height, threshold) {
-            const startingPoints = [];
-            
-            if (!midline || midline.length !== 2) return startingPoints;
-            
-            // ONLY scan along the midline for starting points - neurites must originate from the center line
-            const stepSize = 2; // Fine sampling along midline
-            const distance = Math.sqrt(Math.pow(midline[1].x - midline[0].x, 2) + Math.pow(midline[1].y - midline[0].y, 2));
-            const steps = Math.floor(distance / stepSize);
-            
-            console.log(`Scanning ONLY along midline for neurite starting points: ${steps} points`);
-            
-            for (let i = 0; i <= steps; i++) {
-                const t = i / steps;
-                const x = Math.round(midline[0].x + t * (midline[1].x - midline[0].x));
-                const y = Math.round(midline[0].y + t * (midline[1].y - midline[0].y));
-                
-                // Check if this point is in bounds and in the analysis area
-                if (x >= 5 && x < width - 5 && y >= 5 && y < height - 5) {
-                    const point = {x, y};
-                    
-                    // Make sure the midline point is within the analysis area and not in exclusion zone
-                    if (isPointInAnalysisArea(point) && !isPointInExclusionZone(point)) {
-                        // Get pixel brightness at this midline point
-                        const pixelIndex = (y * width + x) * 4;
-                        const r = data[pixelIndex];
-                        const g = data[pixelIndex + 1];
-                        const b = data[pixelIndex + 2];
-                        const brightness = (r + g + b) / 3;
-                        
-                        // Only add points above threshold - these are potential neurite starting points
-                        if (brightness > threshold) {
-                            startingPoints.push({x, y, brightness});
-                            console.log(`Found starting point on midline: (${x},${y}) brightness=${brightness.toFixed(1)}`);
-                        }
-                    }
-                }
-            }
-            
-            // Also sample a few points very close to the midline (within 3-5 pixels) to catch nearby sprouting
-            const lineThickness = 4; // Only a few pixels around the midline
-            for (let i = 0; i <= steps; i += 3) { // Sample every 3rd point to avoid too many
-                const t = i / steps;
-                const baseX = midline[0].x + t * (midline[1].x - midline[0].x);
-                const baseY = midline[0].y + t * (midline[1].y - midline[0].y);
-                
-                // Calculate perpendicular direction to midline
-                const lineVecX = midline[1].x - midline[0].x;
-                const lineVecY = midline[1].y - midline[0].y;
-                const lineLength = Math.sqrt(lineVecX * lineVecX + lineVecY * lineVecY);
-                const perpX = -lineVecY / lineLength;
-                const perpY = lineVecX / lineLength;
-                
-                // Sample points very close to both sides of the midline
-                for (let offset = -lineThickness; offset <= lineThickness; offset += 2) {
-                    const x = Math.round(baseX + offset * perpX);
-                    const y = Math.round(baseY + offset * perpY);
-                    
-                    if (x >= 5 && x < width - 5 && y >= 5 && y < height - 5) {
-                        const point = {x, y};
-                        
-                        if (isPointInAnalysisArea(point) && !isPointInExclusionZone(point)) {
-                            const pixelIndex = (y * width + x) * 4;
-                            const r = data[pixelIndex];
-                            const g = data[pixelIndex + 1];
-                            const b = data[pixelIndex + 2];
-                            const brightness = (r + g + b) / 3;
-                            
-                            if (brightness > threshold) {
-                                startingPoints.push({x, y, brightness});
-                            }
-                        }
-                    }
-                }
-            }
-            
-            console.log(`Found ${startingPoints.length} starting points along midline`);
-            
-            // Sort by brightness and limit to reasonable number
-            startingPoints.sort((a, b) => b.brightness - a.brightness);
-            return startingPoints.slice(0, 80); // Reasonable limit focused on midline
-        }
-
-        function getPolygonBounds(points) {
-            const xs = points.map(p => p.x);
-            const ys = points.map(p => p.y);
-            return {
-                minX: Math.max(0, Math.floor(Math.min(...xs))),
-                maxX: Math.min(canvas.width - 1, Math.ceil(Math.max(...xs))),
-                minY: Math.max(0, Math.floor(Math.min(...ys))),
-                maxY: Math.min(canvas.height - 1, Math.ceil(Math.max(...ys)))
-            };
-        }
-
-        function traceNeuritesFromPoint(data, width, height, startPoint, threshold, minLength) {
-            const neurites = [];
-            const numDirections = 16; // More directions for better coverage
-            
-            console.log(`Tracing from midline point (${startPoint.x},${startPoint.y}) towards ${selectedSide} side`);
-            
-            for (let dir = 0; dir < numDirections; dir++) {
-                const angle = (dir * Math.PI * 2) / numDirections;
-                const cosAngle = Math.cos(angle);
-                const sinAngle = Math.sin(angle);
-                
-                // Check if this direction goes towards the selected side
-                // Test a point a short distance in this direction
-                const testX = startPoint.x + 20 * cosAngle;
-                const testY = startPoint.y + 20 * sinAngle;
-                const testSide = isLeftSide({x: testX, y: testY}) ? 'left' : 'right';
-                
-                // Only trace in directions that lead to the selected side
-                if (testSide !== selectedSide) continue;
-                
-                let path = [{x: startPoint.x, y: startPoint.y}];
-                let totalLength = 0;
-                let consecutiveDarkPixels = 0;
-                const maxDarkPixels = 12; // Increased to allow more gaps in longer neurites
-                
-                // Trace outward from midline starting point
-                for (let dist = 1; dist < 800; dist += 1) { // Increased to 800 pixels to catch longer neurites
-                    const currentX = Math.round(startPoint.x + dist * cosAngle);
-                    const currentY = Math.round(startPoint.y + dist * sinAngle);
-                    
-                    // Check bounds
-                    if (currentX < 0 || currentX >= width || currentY < 0 || currentY >= height) break;
-                    
-                    // Make sure we're still on the selected side
-                    const currentSide = isLeftSide({x: currentX, y: currentY}) ? 'left' : 'right';
-                    if (currentSide !== selectedSide) break;
-                    
-                    // Check if still within analysis area
-                    if (!isPointInAnalysisArea({x: currentX, y: currentY})) break;
-                    
-                    // Check exclusion zone
-                    if (isPointInExclusionZone({x: currentX, y: currentY})) break;
-                    
-                    // Check brightness
-                    const pixelIndex = (currentY * width + currentX) * 4;
-                    const r = data[pixelIndex];
-                    const g = data[pixelIndex + 1];
-                    const b = data[pixelIndex + 2];
-                    const brightness = (r + g + b) / 3;
-                    
-                    // More permissive adaptive threshold for longer neurites
-                    const distanceFactor = Math.max(0.2, 1 - (dist / 800)); // More gradual decrease
-                    const adaptiveThreshold = threshold * 0.5 * distanceFactor; // Lower base threshold
-                    
-                    if (brightness > adaptiveThreshold) {
-                        consecutiveDarkPixels = 0;
-                        path.push({x: currentX, y: currentY});
-                        totalLength = dist / scale; // Convert to micrometers
-                    } else {
-                        consecutiveDarkPixels++;
-                        
-                        // Stop if too many consecutive dark pixels
-                        if (consecutiveDarkPixels > maxDarkPixels) {
-                            break;
-                        }
-                    }
-                    
-                    // More permissive brightness check for longer neurites
-                    if (brightness < startPoint.brightness * 0.05) { // Reduced from 0.1 to 0.05
-                        break;
-                    }
-                }
-                
-                // Add neurite if it meets minimum requirements
-                if (totalLength >= minLength && path.length >= 3) {
-                    const endPoint = path[path.length - 1];
-                    const distanceFromMidline = calculateDistanceFromMidline(endPoint);
-                    
-                    neurites.push({
-                        startpoint: {x: startPoint.x, y: startPoint.y},
-                        endpoint: {x: endPoint.x, y: endPoint.y},
-                        length: totalLength,
-                        distanceFromMidline: distanceFromMidline,
-                        angle: angle,
-                        brightness: startPoint.brightness,
-                        path: path
-                    });
-                    
-                    console.log(`Found neurite: length=${totalLength.toFixed(1)}μm, distance=${distanceFromMidline.toFixed(1)}μm, side=${selectedSide}`);
-                }
-            }
-            
-            return neurites;
-        }
-
-        function calculateDistanceFromMidline(point) {
-            if (!midline || midline.length !== 2) return 0;
-            
-            const [p1, p2] = midline;
-            const lineLength = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
-            const distance = Math.abs((p2.y - p1.y) * point.x - (p2.x - p1.x) * point.y + p2.x * p1.y - p2.y * p1.x) / lineLength;
-            
-            return distance / scale; // Convert to micrometers
-        }
-
-        function categorizeNeurites() {
-            const counts = {
-                '0-200': 0,
-                '200-400': 0,
-                '400-600': 0,
-                '600-800': 0,
-                '800+': 0
-            };
-            
-            detectedNeurites.forEach(neurite => {
-                const distance = neurite.distanceFromMidline;
-                
-                // Cumulative counting - all neurites contribute to all ranges they reach
-                if (distance >= 0) counts['0-200']++;
-                if (distance >= 200) counts['200-400']++;
-                if (distance >= 400) counts['400-600']++;
-                if (distance >= 600) counts['600-800']++;
-                if (distance >= 800) counts['800+']++;
-            });
-            
-            updateCounters(counts);
-        }
-
-        function updateCounters(counts) {
-            document.getElementById('count_0_200').textContent = counts['0-200'];
-            document.getElementById('count_200_400').textContent = counts['200-400'];
-            document.getElementById('count_400_600').textContent = counts['400-600'];
-            document.getElementById('count_600_800').textContent = counts['600-800'];
-            document.getElementById('count_800_plus').textContent = counts['800+'];
-        }
-
-        function updateRegenerationDisplay() {
-            const totalNeurites = detectedNeurites.length;
-            
-            if (totalNeurites === 0) {
-                document.getElementById('regenDisplay').style.display = 'none';
-                return;
-            }
-            
-            document.getElementById('mainRegenPercentage').textContent = totalNeurites;
-            document.getElementById('regenDetails').textContent = `neurites detected on ${selectedSide} side`;
-            document.getElementById('regenDisplay').style.display = 'block';
-        }
-
-        function resetCounters() {
-            const ranges = ['0_200', '200_400', '400_600', '600_800', '800_plus'];
-            ranges.forEach(range => {
-                document.getElementById(`count_${range}`).textContent = '0';
-            });
-        }
-
-        function clearCanvas() {
-            if (!confirm('This will clear all analysis data and reset everything. Continue?')) {
-                return;
-            }
-            
-            // Reset all variables
-            midline = null;
-            analysisArea = null;
-            exclusionZones = [];
-            currentFreeformZone = [];
-            currentAreaPoints = [];
-            detectedNeurites = [];
-            currentExclusionZone = null;
-            selectedSide = null;
-            isDrawing = false;
-            
-            // Reset button states
-            const buttons = [
-                'midlineBtn', 'selectSideBtn', 'areaBtn', 'excludeBtn', 
-                'detectBtn', 'analyzeBtn', 'exportBtn', 'saveImageBtn'
-            ];
-            
-            buttons.forEach(btnId => {
-                const btn = document.getElementById(btnId);
-                if (btn) {
-                    if (btnId === 'midlineBtn') {
-                        btn.disabled = false;
-                        btn.classList.add('active');
-                    } else {
-                        btn.disabled = true;
-                        btn.classList.remove('active');
-                    }
-                }
-            });
-            
-            // Hide sections
-            document.getElementById('exclusionModeGroup').style.display = 'none';
-            document.getElementById('sideSelectionHint').style.display = 'none';
-            document.getElementById('regenDisplay').style.display = 'none';
-            document.getElementById('resultsSection').style.display = 'none';
-            
-            // Reset labels
-            document.getElementById('sideLabel').textContent = 'Selected Side';
-            
-            // Reset counters
-            resetCounters();
-            
-            // Clear and redraw canvas
-            if (originalImage) {
-                applyImageAdjustments();
-            }
-            
-            setTool('midline');
-            updateStatus("All data cleared. Ready to start analysis from Step 1: Draw Midline");
-        }
-
-        function saveNeuriteImage() {
-            try {
-                // Create a filename with timestamp
-                const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
-                const filename = `neurite_labeled_image_${selectedSide}_side_${timestamp}.png`;
-                
-                // Convert canvas to blob and download
-                canvas.toBlob((blob) => {
-                    const url = URL.createObjectURL(blob);
-                    const downloadLink = document.createElement('a');
-                    
-                    downloadLink.href = url;
-                    downloadLink.download = filename;
-                    downloadLink.style.display = 'none';
-                    
-                    document.body.appendChild(downloadLink);
-                    downloadLink.click();
-                    document.body.removeChild(downloadLink);
-                    
-                    // Clean up
-                    URL.revokeObjectURL(url);
-                    
-                    updateStatus(`Labeled image saved: ${detectedNeurites.length} neurites from ${selectedSide} side`);
-                }, 'image/png', 0.95); // High quality PNG
-                
-            } catch (error) {
-                console.error('Image save error:', error);
-                alert('Error saving image: ' + error.message);
+        function clearAutoDetected() {
+            if(confirm("This will remove all auto-detected neurites, keeping only the ones you added manually. Are you sure?")) {
+                detectedNeurites = detectedNeurites.filter(n => n.manual);
+                updateAllResults();
             }
         }
 
-        function exportToCSV() {
+        function analyzeImageForNeurites(imageData, sensitivity) { const neurites = []; const { data, width, height } = imageData; const threshold = parseFloat(document.getElementById('detectionThreshold').value) || 100; const minLength = parseFloat(document.getElementById('minLengthInput').value) || 5; const thresholdAdjustments = { 'low': 40, 'medium': 0, 'high': -30 }; const adjustedThreshold = threshold + thresholdAdjustments[sensitivity]; const startingPoints = findNeuriteStartingPoints(data, width, height, adjustedThreshold); startingPoints.forEach(startPoint => { const traces = traceNeuritesFromPoint(data, width, height, startPoint, adjustedThreshold, minLength); neurites.push(...traces); }); return neurites; }
+        function findNeuriteStartingPoints(data, width, height, threshold) { const startingPoints = []; if (!midline || midline.length !== 2) return startingPoints; const distance = Math.hypot(midline[1].x - midline[0].x, midline[1].y - midline[0].y); const steps = Math.floor(distance / 2); for (let i = 0; i <= steps; i++) { const t = i / steps; const x = Math.round(midline[0].x + t * (midline[1].x - midline[0].x)); const y = Math.round(midline[0].y + t * (midline[1].y - midline[0].y)); if (x >= 0 && x < width && y >= 0 && y < height) { const point = {x, y}; if (isPointInAnalysisArea(point) && !isPointInExclusionZone(point)) { const brightness = (data[(y * width + x) * 4] + data[(y * width + x) * 4 + 1] + data[(y * width + x) * 4 + 2]) / 3; if (brightness > threshold) startingPoints.push({x, y, brightness}); } } } return startingPoints.sort((a, b) => b.brightness - a.brightness).slice(0, 150); }
+        function traceNeuritesFromPoint(data, width, height, startPoint, threshold, minLength) { const neurites = []; for (let dir = 0; dir < 16; dir++) { const angle = (dir * Math.PI * 2) / 16; const cosAngle = Math.cos(angle); const sinAngle = Math.sin(angle); if ((isLeftSide({x: startPoint.x + 20 * cosAngle, y: startPoint.y + 20 * sinAngle}) ? 'left' : 'right') !== selectedSide) continue; let path = [{x: startPoint.x, y: startPoint.y}]; let consecutiveDarkPixels = 0; const maxDarkPixels = 12; for (let dist = 1; dist < 800; dist++) { const currentX = Math.round(startPoint.x + dist * cosAngle); const currentY = Math.round(startPoint.y + dist * sinAngle); const p = {x: currentX, y: currentY}; if (p.x < 0 || p.x >= width || p.y < 0 || p.y >= height || !isPointInAnalysisArea(p) || isPointInExclusionZone(p)) break; const brightness = (data[(p.y * width + p.x) * 4] + data[(p.y * width + p.x) * 4 + 1] + data[(p.y * width + p.x) * 4 + 2]) / 3; const adaptiveThreshold = threshold * 0.5 * Math.max(0.2, 1 - (dist / 800)); if (brightness > adaptiveThreshold) { consecutiveDarkPixels = 0; path.push(p); } else { consecutiveDarkPixels++; if (consecutiveDarkPixels > maxDarkPixels) break; } } const totalLength = Math.hypot(path[path.length-1].x - startPoint.x, path[path.length-1].y - startPoint.y) / scale; if (totalLength >= minLength && path.length >= 3) { const endPoint = path[path.length - 1]; neurites.push({ startpoint: startPoint, endpoint: endPoint, length: totalLength, path: path }); } } return neurites; }
+        function calculateDistanceFromMidline(point) { if (!midline || midline.length !== 2) return 0; const [p1, p2] = midline; const lineLength = Math.hypot(p2.x - p1.x, p2.y - p1.y); return lineLength === 0 ? 0 : Math.abs((p2.y - p1.y) * point.x - (p2.x - p1.x) * point.y + p2.x * p1.y - p2.y * p1.x) / lineLength / scale; }
+        function categorizeNeurites() { const counts = {'0-200': 0, '200-400': 0, '400-600': 0, '600-800': 0, '800+': 0}; detectedNeurites.forEach(n => { const d = n.distanceFromMidline; if (d >= 0) counts['0-200']++; if (d >= 200) counts['200-400']++; if (d >= 400) counts['400-600']++; if (d >= 600) counts['600-800']++; if (d >= 800) counts['800+']++; }); updateCounters(counts); }
+        function updateCounters(counts) { document.getElementById('count_0_200').textContent = counts['0-200']; document.getElementById('count_200_400').textContent = counts['200-400']; document.getElementById('count_400_600').textContent = counts['400-600']; document.getElementById('count_600_800').textContent = counts['600-800']; document.getElementById('count_800_plus').textContent = counts['800+']; }
+        function updateRegenerationDisplay() { const total = detectedNeurites.length; const display = document.getElementById('regenDisplay'); if (total === 0) { display.style.display = 'none'; return; } document.getElementById('mainRegenPercentage').textContent = total; document.getElementById('regenDetails').textContent = `neurites detected on ${selectedSide} side`; display.style.display = 'block'; }
+        function resetCounters() { ['0_200', '200_400', '400_600', '600_800', '800_plus'].forEach(r => document.getElementById(`count_${r}`).textContent = '0'); }
+        function clearCanvas() { if (confirm('This will clear all analysis data. Continue?')) { resetAnalysis(); if (originalImage) { applyImageAdjustments(); } else { ctx.clearRect(0,0,canvas.width,canvas.height); } } }
+        function saveNeuriteImage() { try { const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-'); const filename = `neurite_labeled_image_${selectedSide}_side_${timestamp}.png`; canvas.toBlob((blob) => { const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = filename; document.body.appendChild(link); link.click(); document.body.removeChild(link); URL.revokeObjectURL(url); }, 'image/png'); } catch (error) { alert('Error saving image: ' + error.message); } }
+        function exportToCSV() { if (detectedNeurites.length === 0) return alert('No neurites detected.'); const header = 'Neurite_ID,Length_um,Distance_From_Midline_um,Side,Start_X,Start_Y,End_X,End_Y,Manual\n'; const rows = detectedNeurites.map((n, i) => [i + 1, n.length.toFixed(2), n.distanceFromMidline.toFixed(2), selectedSide, n.startpoint.x.toFixed(1), n.startpoint.y.toFixed(1), n.endpoint.x.toFixed(1), n.endpoint.y.toFixed(1), n.manual ? 'Yes' : 'No'].join(',')); const csv = header + rows.join('\n'); const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = `neurite_analysis_${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.csv`; document.body.appendChild(link); link.click(); document.body.removeChild(link); }
+        
+        function analyzeResults(shouldScroll = true) {
             if (detectedNeurites.length === 0) {
-                alert('No neurites detected. Please run detection first.');
+                document.getElementById('resultsSection').style.display = 'none';
                 return;
             }
-            
-            try {
-                const csvHeader = 'Neurite_ID,Length_um,Distance_From_Midline_um,Angle_degrees,Side,Start_X,Start_Y,End_X,End_Y,Category\n';
-                
-                const csvRows = detectedNeurites.map((neurite, index) => {
-                    const side = isLeftSide(neurite.endpoint) ? 'Left' : 'Right';
-                    const distance = neurite.distanceFromMidline;
-                    
-                    let category;
-                    if (distance <= 200) category = '0-200um';
-                    else if (distance <= 400) category = '200-400um';
-                    else if (distance <= 600) category = '400-600um';
-                    else if (distance <= 800) category = '600-800um';
-                    else category = '>800um';
-                    
-                    const angleDegrees = (neurite.angle * 180 / Math.PI).toFixed(1);
-                    
-                    return [
-                        index + 1,
-                        neurite.length.toFixed(2),
-                        distance.toFixed(2),
-                        angleDegrees,
-                        side,
-                        neurite.startpoint.x.toFixed(1),
-                        neurite.startpoint.y.toFixed(1),
-                        neurite.endpoint.x.toFixed(1),
-                        neurite.endpoint.y.toFixed(1),
-                        category
-                    ].join(',');
-                });
-                
-                const csvContent = csvHeader + csvRows.join('\n');
-                
-                const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
-                const filename = `neurite_analysis_${selectedSide}_side_${timestamp}.csv`;
-                
-                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-                const downloadLink = document.createElement('a');
-                const url = URL.createObjectURL(blob);
-                
-                downloadLink.href = url;
-                downloadLink.download = filename;
-                downloadLink.style.display = 'none';
-                
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
-                
-                URL.revokeObjectURL(url);
-                
-                updateStatus(`CSV exported: ${detectedNeurites.length} neurites from ${selectedSide} side`);
-                
-            } catch (error) {
-                console.error('CSV export error:', error);
-                alert('Error exporting CSV: ' + error.message);
-            }
-        }
-
-        function analyzeResults() {
-            if (detectedNeurites.length === 0) {
-                alert('No neurites detected. Please run detection first.');
-                return;
-            }
-            
-            // Calculate statistics
             const totalNeurites = detectedNeurites.length;
-            const longestNeurite = Math.max(...detectedNeurites.map(n => n.distanceFromMidline)).toFixed(0);
-            const averageLength = (detectedNeurites.reduce((sum, n) => sum + n.distanceFromMidline, 0) / totalNeurites).toFixed(0);
-            
-            // Get actual distribution (not cumulative)
-            const actualCounts = {
-                '0-200': 0,
-                '200-400': 0,
-                '400-600': 0,
-                '600-800': 0,
-                '800+': 0
-            };
-            
-            detectedNeurites.forEach(neurite => {
-                const distance = neurite.distanceFromMidline;
-                if (distance <= 200) actualCounts['0-200']++;
-                else if (distance <= 400) actualCounts['200-400']++;
-                else if (distance <= 600) actualCounts['400-600']++;
-                else if (distance <= 800) actualCounts['600-800']++;
-                else actualCounts['800+']++;
-            });
-            
-            // Update statistics
+            const longestNeurite = totalNeurites > 0 ? Math.max(...detectedNeurites.map(n => n.distanceFromMidline)).toFixed(0) : 0;
+            const averageLength = totalNeurites > 0 ? (detectedNeurites.reduce((sum, n) => sum + n.distanceFromMidline, 0) / totalNeurites).toFixed(0) : 0;
+            const actualCounts = {'0-200': 0, '200-400': 0, '400-600': 0, '600-800': 0, '800+': 0};
+            detectedNeurites.forEach(n => { const d = n.distanceFromMidline; if (d <= 200) actualCounts['0-200']++; else if (d <= 400) actualCounts['200-400']++; else if (d <= 600) actualCounts['400-600']++; else if (d <= 800) actualCounts['600-800']++; else actualCounts['800+']++; });
             document.getElementById('totalNeurites').textContent = totalNeurites;
             document.getElementById('longestNeurite').textContent = longestNeurite + ' μm';
             document.getElementById('averageLength').textContent = averageLength + ' μm';
-            
-            // Create chart
             createComparisonChart(actualCounts);
-            
-            // Generate detailed results
             generateDetailedResults(actualCounts, totalNeurites);
-            
-            // Show results section
-            document.getElementById('resultsSection').style.display = 'block';
-            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
-            
-            updateStatus("Analysis complete! Results generated successfully.");
+            const resultsSection = document.getElementById('resultsSection');
+            resultsSection.style.display = 'block';
+            if(shouldScroll) resultsSection.scrollIntoView({ behavior: 'smooth' });
         }
-
+        
         function generateDetailedResults(counts, totalNeurites) {
-            const detailedResults = document.getElementById('detailedResults');
-            
-            detailedResults.innerHTML = `
-                <h3>Detailed Analysis Report</h3>
-                
-                <h4>Summary</h4>
-                <p><strong>Side Analyzed:</strong> ${selectedSide.charAt(0).toUpperCase() + selectedSide.slice(1)} Side</p>
-                <p><strong>Total Neurites Detected:</strong> ${totalNeurites}</p>
-                <p><strong>Scale Used:</strong> ${scale} pixels per μm</p>
-                <p><strong>Exclusion Zones:</strong> ${exclusionZones.length} areas excluded</p>
-                <p><strong>Detection Method:</strong> Neurites starting from the midline and extending towards selected side</p>
-                <p><strong>Analysis Area:</strong> Custom polygon defined</p>
-                
-                <h4>Distance Distribution (from Midline)</h4>
-                <table class="result-table">
-                    <thead>
-                        <tr>
-                            <th>Distance Range</th>
-                            <th>Count</th>
-                            <th>Percentage</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>0-200 μm</td>
-                            <td>${counts['0-200']}</td>
-                            <td>${((counts['0-200'] / totalNeurites) * 100).toFixed(1)}%</td>
-                        </tr>
-                        <tr>
-                            <td>200-400 μm</td>
-                            <td>${counts['200-400']}</td>
-                            <td>${((counts['200-400'] / totalNeurites) * 100).toFixed(1)}%</td>
-                        </tr>
-                        <tr>
-                            <td>400-600 μm</td>
-                            <td>${counts['400-600']}</td>
-                            <td>${((counts['400-600'] / totalNeurites) * 100).toFixed(1)}%</td>
-                        </tr>
-                        <tr>
-                            <td>600-800 μm</td>
-                            <td>${counts['600-800']}</td>
-                            <td>${((counts['600-800'] / totalNeurites) * 100).toFixed(1)}%</td>
-                        </tr>
-                        <tr>
-                            <td>>800 μm</td>
-                            <td>${counts['800+']}</td>
-                            <td>${((counts['800+'] / totalNeurites) * 100).toFixed(1)}%</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <h4>Analysis Parameters</h4>
-                <p><strong>Scale:</strong> ${scale} pixels per μm</p>
-                <p><strong>Sensitivity:</strong> ${document.getElementById('sensitivitySelect').value}</p>
-                <p><strong>Detection Threshold:</strong> ${document.getElementById('detectionThreshold').value}</p>
-                <p><strong>Minimum Neurite Length:</strong> ${document.getElementById('minLengthInput').value} μm</p>
-                <p><strong>Brightness:</strong> ${brightness}%</p>
-                <p><strong>Contrast:</strong> ${contrast}%</p>
-            `;
+            const manualCount = detectedNeurites.filter(n => n.manual).length;
+            document.getElementById('detailedResults').innerHTML = `<h3>Detailed Analysis Report</h3><p><strong>Total Neurites (Auto + Manual):</strong> ${totalNeurites} (${totalNeurites - manualCount} auto, ${manualCount} manual)</p><h4>Distance Distribution (from Midline)</h4><table class="result-table"><thead><tr><th>Distance Range</th><th>Count</th><th>Percentage</th></tr></thead><tbody>${Object.entries(counts).map(([range, count]) => `<tr><td>${range.replace('-', ' - ')} μm</td><td>${count}</td><td>${totalNeurites > 0 ? (count / totalNeurites * 100).toFixed(1) : 0}%</td></tr>`).join('')}</tbody></table>`;
         }
-
+        
         function createComparisonChart(counts) {
-            const ctx = document.getElementById('comparisonChart').getContext('2d');
-            
+            const chartCtx = document.getElementById('comparisonChart').getContext('2d');
             if (window.comparisonChart && typeof window.comparisonChart.destroy === 'function') {
                 window.comparisonChart.destroy();
             }
+            window.comparisonChart = new Chart(chartCtx, { type: 'bar', data: { labels: ['0-200 μm', '200-400 μm', '400-600 μm', '600-800 μm', '>800 μm'], datasets: [{ label: `${selectedSide.charAt(0).toUpperCase() + selectedSide.slice(1)} Side Neurites`, data: Object.values(counts), backgroundColor: ['rgba(0, 255, 0, 0.8)','rgba(255, 255, 0, 0.8)','rgba(255, 140, 0, 0.8)','rgba(255, 69, 0, 0.8)','rgba(255, 0, 0, 0.8)'], borderColor: ['rgba(0, 255, 0, 1)','rgba(255, 255, 0, 1)','rgba(255, 140, 0, 1)','rgba(255, 69, 0, 1)','rgba(255, 0, 0, 1)'], borderWidth: 2 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: `Neurite Distribution by Distance`, font: { size: 16, weight: 'bold' } } }, scales: { y: { beginAtZero: true, title: { display: true, text: 'Number of Neurites' } }, x: { title: { display: true, text: 'Distance from Midline (μm)' } } } } });
+        }
+        
+        function showProcessing(show) { document.getElementById('processingOverlay').style.display = show ? 'flex' : 'none'; if (!show) document.getElementById('progressFill').style.width = '0%'; }
+        function updateProgress(percent) { document.getElementById('progressFill').style.width = percent + '%'; }
+        function updateStatus(message) { document.getElementById('statusBar').textContent = message; }
 
-            window.comparisonChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['0-200 μm', '200-400 μm', '400-600 μm', '600-800 μm', '>800 μm'],
-                    datasets: [{
-                        label: `${selectedSide.charAt(0).toUpperCase() + selectedSide.slice(1)} Side Neurites`,
-                        data: [counts['0-200'], counts['200-400'], counts['400-600'], counts['600-800'], counts['800+']],
-                        backgroundColor: [
-                            'rgba(0, 255, 0, 0.8)',
-                            'rgba(255, 255, 0, 0.8)',
-                            'rgba(255, 140, 0, 0.8)',
-                            'rgba(255, 69, 0, 0.8)',
-                            'rgba(255, 0, 0, 0.8)'
-                        ],
-                        borderColor: [
-                            'rgba(0, 255, 0, 1)',
-                            'rgba(255, 255, 0, 1)',
-                            'rgba(255, 140, 0, 1)',
-                            'rgba(255, 69, 0, 1)',
-                            'rgba(255, 0, 0, 1)'
-                        ],
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: `Neurite Distribution by Distance from Midline (${selectedSide.charAt(0).toUpperCase() + selectedSide.slice(1)} Side)`,
-                            font: {
-                                size: 16,
-                                weight: 'bold'
-                            }
-                        },
-                        legend: {
-                            position: 'top'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Number of Neurites'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Distance from Midline (μm)'
-                            }
-                        }
-                    }
-                }
-            });
+        // TIFF Modal Functions
+        function showTiffModal(file) {
+            // Update file information
+            document.getElementById('tiffFileName').textContent = file.name;
+            document.getElementById('tiffFileSize').textContent = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+            
+            // Show modal
+            document.getElementById('tiffModal').style.display = 'flex';
+            
+            // Clear the file input so user can select the same file again after conversion
+            document.getElementById('imageInput').value = '';
+            document.getElementById('newImageInput').value = '';
         }
 
-        function showProcessing(show) {
-            document.getElementById('processingOverlay').style.display = show ? 'flex' : 'none';
-            if (!show) {
-                updateProgress(0);
+        function closeTiffModal() {
+            document.getElementById('tiffModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('tiffModal');
+            if (event.target === modal) {
+                closeTiffModal();
             }
-        }
+        });
 
-        function updateProgress(percent) {
-            document.getElementById('progressFill').style.width = percent + '%';
-        }
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeTiffModal();
+            }
+        });
 
-        function updateStatus(message) {
-            document.getElementById('statusBar').textContent = message;
-        }
-
-        // Initialize the app when the page loads
         window.addEventListener('load', initializeApp);
     </script>
 </body>
