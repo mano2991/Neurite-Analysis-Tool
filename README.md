@@ -1,4 +1,4 @@
-#Deep Neurite Analysis Tool (DeNAT): A machine-learning framework for precise automated neurite outgrowth measurement
+# Deep Neurite Analysis Tool (DeNAT): A machine-learning framework for precise automated neurite outgrowth measurement
 Deep Neurite Analysis Tool (DeNAT), an accessible deep-learning–based platform that automatically measures neurite outgrowth after injury
 
 ## Model Requirements
