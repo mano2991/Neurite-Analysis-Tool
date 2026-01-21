@@ -46,6 +46,72 @@
             font-size: 1.1em;
         }
 
+        /* Tab Navigation Styles */
+        .tab-nav {
+            display: flex;
+            background: #f8f9fa;
+            padding: 10px 30px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #7f8c8d;
+            border-radius: 10px 10px 0 0;
+            transition: all 0.3s ease;
+            margin-right: 5px;
+        }
+
+        .tab-btn:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .tab-btn.active {
+            color: #667eea;
+            background: white;
+            border: 1px solid #eee;
+            border-bottom: 2px solid white;
+            margin-bottom: -1px;
+        }
+
+        /* Video Tutorial Styles */
+        .video-content {
+            padding: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: #000;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-description {
+            margin-bottom: 30px;
+            color: #34495e;
+        }
+
+        /* Main Content Layout */
         .main-content {
             display: grid;
             grid-template-columns: 1fr 450px;
@@ -452,155 +518,187 @@
     <div class="container">
         <div class="header">
             <h1>Deep Neurite Analysis Tool (DeNAT)</h1>
-            <p>Machine learning bases neurite detection and measurement with distance-based analysis</p>
+            <p>Machine learning based neurite detection and measurement with distance-based analysis</p>
         </div>
 
-        <div class="main-content">
-            <div class="left-panel">
-                <div class="upload-section" id="uploadSection">
-                    <div id="uploadPrompt">
-                        <h3>Upload Pyramidotomy Image</h3>
-                        <p>Drag and drop a PNG/JPG/TIFF image here or click to select</p>
-                        <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.tif,.tiff" style="display: none;">
-                        <button class="tool-btn" onclick="document.getElementById('imageInput').click()">Choose Image</button>
-                    </div>
-                </div>
+        <div class="tab-nav">
+            <button class="tab-btn active" id="toolTabBtn" onclick="switchTab('tool')">Analysis Tool</button>
+            <button class="tab-btn" id="tutorialTabBtn" onclick="switchTab('tutorial')">Video Tutorial</button>
+        </div>
 
-                <div class="new-image-button-container" id="newImageButtonContainer" style="display: none;">
-                    <input type="file" id="newImageInput" accept=".png,.jpg,.jpeg,.tif,.tiff" style="display: none;">
-                    <button class="tool-btn newimage" onclick="document.getElementById('newImageInput').click()" style="width: 100%;">📷 Upload New Image</button>
-                </div>
-
-                <div class="image-container" id="imageContainer" style="display: none;">
-                    <canvas id="analysisCanvas" class="analysis-canvas"></canvas>
-                    <div class="processing-overlay" id="processingOverlay" style="display: none;">
-                        <div>
-                            <div>Processing image...</div>
-                            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tools-section" id="toolsSection" style="display: none;">
-                    <div class="status-bar" id="statusBar">Click "Draw Midline" and draw a line to separate left and right sides</div>
-
-                    <div class="tool-group">
-                        <h3>Analysis Steps</h3>
-                        <div class="tool-buttons">
-                            <button class="tool-btn active" id="midlineBtn" onclick="setTool('midline')">1. Midline</button>
-                            <button class="tool-btn" id="selectSideBtn" onclick="setTool('selectSide')" disabled>2. Select Side</button>
-                            <button class="tool-btn area" id="areaBtn" onclick="setTool('area')" disabled>3. Analysis Area</button>
-                            <button class="tool-btn exclude" id="excludeBtn" onclick="setTool('exclude')" disabled>4. Exclude Zones</button>
-                            <button class="tool-btn" id="detectBtn" onclick="setTool('detect')" disabled>5. Auto-Detect</button>
-                            <button class="tool-btn add" id="addBtn" onclick="setTool('add')" disabled>6. Add Neurite</button>
-                            <button class="tool-btn remove" id="removeBtn" onclick="setTool('remove')" disabled>7. Remove Neurite</button>
-                            <button class="tool-btn clear-auto" id="clearAutoBtn" onclick="clearAutoDetected()" disabled>Clear Auto</button>
-                            <button class="tool-btn clear" onclick="clearCanvas()">Clear All</button>
+        <div id="toolTab" class="tab-pane">
+            <div class="main-content">
+                <div class="left-panel">
+                    <div class="upload-section" id="uploadSection">
+                        <div id="uploadPrompt">
+                            <h3>Upload Pyramidotomy Image</h3>
+                            <p>Drag and drop a PNG/JPG/TIFF image here or click to select</p>
+                            <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.tif,.tiff" style="display: none;">
+                            <button class="tool-btn" onclick="document.getElementById('imageInput').click()">Choose Image</button>
                         </div>
                     </div>
 
-                    <div class="tool-group" id="exclusionModeGroup" style="display: none;">
-                        <h3>Exclusion Zone Mode</h3>
-                        <div class="exclusion-mode-selector">
-                            <button class="mode-btn" id="rectangleMode" onclick="setExclusionMode('rectangle')">Rectangle</button>
-                            <button class="mode-btn active" id="freeformMode" onclick="setExclusionMode('freeform')">Free-form</button>
-                        </div>
+                    <div class="new-image-button-container" id="newImageButtonContainer" style="display: none;">
+                        <input type="file" id="newImageInput" accept=".png,.jpg,.jpeg,.tif,.tiff" style="display: none;">
+                        <button class="tool-btn newimage" onclick="document.getElementById('newImageInput').click()" style="width: 100%;">📷 Upload New Image</button>
                     </div>
 
-                    <div class="tool-group">
-                        <h3>Image Adjustments</h3>
-                        <div class="slider-group">
-                            <label>Brightness:</label>
-                            <div class="slider-container">
-                                <input type="range" class="slider" id="brightnessSlider" min="0" max="200" value="100" step="1">
-                                <span class="slider-value" id="brightnessValue">100%</span>
-                            </div>
-                        </div>
-                        <div class="slider-group">
-                            <label>Contrast:</label>
-                            <div class="slider-container">
-                                <input type="range" class="slider" id="contrastSlider" min="0" max="200" value="100" step="1">
-                                <span class="slider-value" id="contrastValue">100%</span>
+                    <div class="image-container" id="imageContainer" style="display: none;">
+                        <canvas id="analysisCanvas" class="analysis-canvas"></canvas>
+                        <div class="processing-overlay" id="processingOverlay" style="display: none;">
+                            <div>
+                                <div>Processing image...</div>
+                                <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tool-group">
-                        <h3>Detection Settings</h3>
-                        <div class="input-group">
-                            <label>Scale (pixels per μm):</label>
-                            <input type="number" id="scaleInput" value="0.5" step="0.1" placeholder="Enter scale factor">
+                    <div class="tools-section" id="toolsSection" style="display: none;">
+                        <div class="status-bar" id="statusBar">Click "Draw Midline" and draw a line to separate left and right sides</div>
+
+                        <div class="tool-group">
+                            <h3>Analysis Steps</h3>
+                            <div class="tool-buttons">
+                                <button class="tool-btn active" id="midlineBtn" onclick="setTool('midline')">1. Midline</button>
+                                <button class="tool-btn" id="selectSideBtn" onclick="setTool('selectSide')" disabled>2. Select Side</button>
+                                <button class="tool-btn area" id="areaBtn" onclick="setTool('area')" disabled>3. Analysis Area</button>
+                                <button class="tool-btn exclude" id="excludeBtn" onclick="setTool('exclude')" disabled>4. Exclude Zones</button>
+                                <button class="tool-btn" id="detectBtn" onclick="setTool('detect')" disabled>5. Auto-Detect</button>
+                                <button class="tool-btn add" id="addBtn" onclick="setTool('add')" disabled>6. Add Neurite</button>
+                                <button class="tool-btn remove" id="removeBtn" onclick="setTool('remove')" disabled>7. Remove Neurite</button>
+                                <button class="tool-btn clear-auto" id="clearAutoBtn" onclick="clearAutoDetected()" disabled>Clear Auto</button>
+                                <button class="tool-btn clear" onclick="clearCanvas()">Clear All</button>
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <label>Sensitivity:</label>
-                            <select id="sensitivitySelect">
-                                <option value="low">Low</option>
-                                <option value="medium" selected>Medium</option>
-                                <option value="high">High</option>
-                            </select>
+
+                        <div class="tool-group" id="exclusionModeGroup" style="display: none;">
+                            <h3>Exclusion Zone Mode</h3>
+                            <div class="exclusion-mode-selector">
+                                <button class="mode-btn" id="rectangleMode" onclick="setExclusionMode('rectangle')">Rectangle</button>
+                                <button class="mode-btn active" id="freeformMode" onclick="setExclusionMode('freeform')">Free-form</button>
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <label>Minimum Neurite Length (μm):</label>
-                            <input type="number" id="minLengthInput" value="5" min="1" step="1">
+
+                        <div class="tool-group">
+                            <h3>Image Adjustments</h3>
+                            <div class="slider-group">
+                                <label>Brightness:</label>
+                                <div class="slider-container">
+                                    <input type="range" class="slider" id="brightnessSlider" min="0" max="200" value="100" step="1">
+                                    <span class="slider-value" id="brightnessValue">100%</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label>Contrast:</label>
+                                <div class="slider-container">
+                                    <input type="range" class="slider" id="contrastSlider" min="0" max="200" value="100" step="1">
+                                    <span class="slider-value" id="contrastValue">100%</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <label>Detection Threshold:</label>
-                            <input type="number" id="detectionThreshold" value="100" min="50" max="255" step="5">
+
+                        <div class="tool-group">
+                            <h3>Detection Settings</h3>
+                            <div class="input-group">
+                                <label>Scale (pixels per μm):</label>
+                                <input type="number" id="scaleInput" value="0.5" step="0.1" placeholder="Enter scale factor">
+                            </div>
+                            <div class="input-group">
+                                <label>Sensitivity:</label>
+                                <select id="sensitivitySelect">
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Minimum Neurite Length (μm):</label>
+                                <input type="number" id="minLengthInput" value="5" min="1" step="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Detection Threshold:</label>
+                                <input type="number" id="detectionThreshold" value="100" min="50" max="255" step="5">
+                            </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="right-panel">
+                    <div class="image-info" id="imageInfo" style="display: none;">
+                        <h3>Image Information</h3>
+                        <p id="imageDetails"></p>
+                    </div>
+
+                    <div class="side-selection-hint" id="sideSelectionHint" style="display: none;">
+                        <h3>Select Side to Analyze</h3>
+                        <p>Click on the side of the image you want to analyze for neurite growth.</p>
+                    </div>
+
+                    <div class="regeneration-display" id="regenDisplay" style="display: none;">
+                        <div class="regen-percentage" id="mainRegenPercentage">0%</div>
+                        <div class="regen-label">Total Neurites on Selected Side</div>
+                        <div class="regen-details" id="regenDetails"></div>
+                    </div>
+
+                    <h3>Detected Neurites by Distance</h3>
+                    
+                    <h4 id="sideLabel">Selected Side</h4>
+                    <div class="neurite-counter">
+                        <div class="counter-group">
+                            <div class="counter-label">0-200 μm</div>
+                            <div class="counter-display" id="count_0_200">0</div>
+                        </div>
+                        <div class="counter-group">
+                            <div class="counter-label">200-400 μm</div>
+                            <div class="counter-display" id="count_200_400">0</div>
+                        </div>
+                        <div class="counter-group">
+                            <div class="counter-label">400-600 μm</div>
+                            <div class="counter-display" id="count_400_600">0</div>
+                        </div>
+                        <div class="counter-group">
+                            <div class="counter-label">600-800 μm</div>
+                            <div class="counter-display" id="count_600_800">0</div>
+                        </div>
+                        <div class="counter-group">
+                            <div class="counter-label">>800 μm</div>
+                            <div class="counter-display" id="count_800_plus">0</div>
+                        </div>
+                    </div>
+
+                    <button class="analyze-btn" id="analyzeBtn" onclick="analyzeResults(true)" disabled>Generate Analysis Report</button>
+                    <button class="export-btn" id="exportBtn" onclick="exportToCSV()" disabled>Export Data to CSV</button>
+                    <button class="export-btn" id="saveImageBtn" onclick="saveNeuriteImage()" disabled style="margin-top: 10px;">Save Labeled Image</button>
                 </div>
             </div>
 
-            <div class="right-panel">
-                <div class="image-info" id="imageInfo" style="display: none;">
-                    <h3>Image Information</h3>
-                    <p id="imageDetails"></p>
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>Analysis Results</h2>
+                <div class="chart-container"><canvas id="comparisonChart"></canvas></div>
+                <div class="stats-grid">
+                    <div class="stat-card total"><div class="stat-value" id="totalNeurites">0</div><div class="stat-label">Total Neurites</div></div>
+                    <div class="stat-card longest"><div class="stat-value" id="longestNeurite">0 μm</div><div class="stat-label">Longest Neurite</div></div>
+                    <div class="stat-card regenerative"><div class="stat-value" id="averageLength">0 μm</div><div class="stat-label">Average Length</div></div>
                 </div>
-
-                <div class="side-selection-hint" id="sideSelectionHint" style="display: none;">
-                    <h3>Select Side to Analyze</h3>
-                    <p>Click on the side of the image you want to analyze for neurite growth.</p>
-                </div>
-
-                <div class="regeneration-display" id="regenDisplay" style="display: none;">
-                    <div class="regen-percentage" id="mainRegenPercentage">0%</div>
-                    <div class="regen-label">Total Neurites on Selected Side</div>
-                    <div class="regen-details" id="regenDetails"></div>
-                </div>
-
-                <h3>Detected Neurites by Distance</h3>
-                
-                <h4 id="sideLabel">Selected Side</h4>
-                <div class="neurite-counter">
-                    <div class="counter-group">
-                        <div class="counter-label">0-200 μm</div>
-                        <div class="counter-display" id="count_0_200">0</div>
-                    </div>
-                    <div class="counter-group">
-                        <div class="counter-label">200-400 μm</div>
-                        <div class="counter-display" id="count_200_400">0</div>
-                    </div>
-                    <div class="counter-group">
-                        <div class="counter-label">400-600 μm</div>
-                        <div class="counter-display" id="count_400_600">0</div>
-                    </div>
-                    <div class="counter-group">
-                        <div class="counter-label">600-800 μm</div>
-                        <div class="counter-display" id="count_600_800">0</div>
-                    </div>
-                    <div class="counter-group">
-                        <div class="counter-label">>800 μm</div>
-                        <div class="counter-display" id="count_800_plus">0</div>
-                    </div>
-                </div>
-
-                <button class="analyze-btn" id="analyzeBtn" onclick="analyzeResults(true)" disabled>Generate Analysis Report</button>
-                <button class="export-btn" id="exportBtn" onclick="exportToCSV()" disabled>Export Data to CSV</button>
-                <button class="export-btn" id="saveImageBtn" onclick="saveNeuriteImage()" disabled style="margin-top: 10px;">Save Labeled Image</button>
+                <div class="detailed-results" id="detailedResults"></div>
             </div>
         </div>
 
-        <!-- TIFF Conversion Modal -->
+        <div id="tutorialTab" class="tab-pane" style="display: none;">
+            <div class="video-content">
+                <h2>How to use DeNAT</h2>
+                <div class="video-description">
+                    <p>Watch this comprehensive walkthrough to learn how to perform neurite detection, draw midlines, define exclusion zones, and export your data.</p>
+                </div>
+                <div class="video-wrapper">
+                    <video id="tutorialVideo" controls>
+                        <source src="DeNAT_Demo.MP4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+
         <div class="tiff-modal" id="tiffModal" style="display: none;">
             <div class="tiff-modal-content">
                 <div class="tiff-header">
@@ -698,20 +796,32 @@
                 </div>
             </div>
         </div>
-
-        <div class="results-section" id="resultsSection" style="display: none;">
-            <h2>Analysis Results</h2>
-            <div class="chart-container"><canvas id="comparisonChart"></canvas></div>
-            <div class="stats-grid">
-                <div class="stat-card total"><div class="stat-value" id="totalNeurites">0</div><div class="stat-label">Total Neurites</div></div>
-                <div class="stat-card longest"><div class="stat-value" id="longestNeurite">0 μm</div><div class="stat-label">Longest Neurite</div></div>
-                <div class="stat-card regenerative"><div class="stat-value" id="averageLength">0 μm</div><div class="stat-label">Average Length</div></div>
-            </div>
-            <div class="detailed-results" id="detailedResults"></div>
-        </div>
     </div>
 
     <script>
+        // TAB MANAGEMENT
+        function switchTab(tab) {
+            const toolPane = document.getElementById('toolTab');
+            const tutorialPane = document.getElementById('tutorialTab');
+            const toolBtn = document.getElementById('toolTabBtn');
+            const tutorialBtn = document.getElementById('tutorialTabBtn');
+            const video = document.getElementById('tutorialVideo');
+
+            if (tab === 'tool') {
+                toolPane.style.display = 'block';
+                tutorialPane.style.display = 'none';
+                toolBtn.classList.add('active');
+                tutorialBtn.classList.remove('active');
+                // Pause video when leaving tutorial tab
+                video.pause();
+            } else {
+                toolPane.style.display = 'none';
+                tutorialPane.style.display = 'block';
+                toolBtn.classList.remove('active');
+                tutorialBtn.classList.add('active');
+            }
+        }
+
         let canvas, ctx;
         let originalImage = null;
         let adjustedCanvas = null;
