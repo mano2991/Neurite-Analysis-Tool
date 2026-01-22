@@ -4,6 +4,8 @@ A machine-learning framework for precise automated neurite outgrowth measurement
 
 DeNAT is an accessible deep-learning-based platform that automatically measures neurite outgrowth after injury.
 
+**🔗 Live App: [neuriteanalysis.netlify.app](https://neuriteanalysis.netlify.app/)**
+
 ## Demo
 
 Watch the demo video: [DeNAT_Demo.MP4](DeNAT_Demo.MP4)
@@ -59,4 +61,6 @@ See [DeNAT Analysis Workflow.pdf](Example_output/DeNAT%20Analysis%20Workflow.pdf
 
 ## License
 
-MIT License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+© 2024 DeNAT. Free for academic and research use.
