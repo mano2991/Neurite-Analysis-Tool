@@ -55,7 +55,7 @@ pip install tensorflow numpy opencv-python scikit-image pandas scikit-learn scip
 
 ## Documentation
 
-See [DeNAT_Analysis_Workflow.docx](docs/DeNAT_Analysis_Workflow.docx) for the complete visual guide with screenshots.
+See [DeNAT_Analysis_Workflow.pdf](Example_output/DeNAT Analysis Workflow.pdf) for the complete visual guide with screenshots.
 
 ## License
 
