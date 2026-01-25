@@ -36,7 +36,7 @@ pip install tensorflow numpy opencv-python scikit-image pandas scikit-learn scip
 
 ## Usage
 
-1. Open `index.html` in your browser
+1. Open `https://neuriteanalysis.netlify.app/` in your browser
 2. Upload your microscopy image
 3. Draw a midline as your reference point
 4. Select the analysis side (Left/Right)
